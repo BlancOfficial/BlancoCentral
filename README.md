@@ -7,5 +7,6 @@ All the _module.js_ Files are storage banks for bot links
 
 Discord.js Module has been uploaded, god bless github desktop not having a file upload limit
 
-# To run the file ensure node.js is downloaded (https://nodejs.org/en/download/releases/)
+# To run the file ensure node.js is downloaded 
+(Link to download https://nodejs.org/en/download/releases/)
 Then run the run.batch file
