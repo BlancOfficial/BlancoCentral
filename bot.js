@@ -13,6 +13,7 @@ const {gura_pictures} = require('./gura_module.js');
 const {lion_pictures} = require('./lion_module.js');
 const {panda_pictures} = require('./panda_module.js');
 const {wolf_pictures} = require('./wolf_module.js');
+const {rabbit_pictures} = require('./rabbit_module.js');
 
 // Run dotenv
 require('dotenv').config();
@@ -34,6 +35,7 @@ bot_reply("guwr", gura_pictures);
 bot_reply("panda", panda_pictures);
 bot_reply("lion", lion_pictures);
 bot_reply("awoo", wolf_pictures);
+bot_reply("bnuy", rabbit_pictures);
 bot_reply("a", ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]);
-bot_reply("info", ["https://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png https://cdn.discordapp.com/attachments/955121751094882336/955532320050380881/Info.png"]);
-bot_reply("help", ["https://cdn.discordapp.com/attachments/955121751094882336/955532320050380881/Info.png"]);
+bot_reply("info", ["https://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png https://cdn.discordapp.com/attachments/806288700736405506/955588489611726930/Info_v1.0.5.png"]);
+bot_reply("help", ["https://cdn.discordapp.com/attachments/806288700736405506/955588489611726930/Info_v1.0.5.png"]);
