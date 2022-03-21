@@ -1,0 +1,3 @@
+var lion_pictures = ["https://cdn.discordapp.com/attachments/940686820939800636/955281462616264734/7e03eee3e18ee0f0dc5425ae1fb03374.jpg", "https://cdn.discordapp.com/attachments/940686820939800636/955281462414946344/55bee099f3db682e7a39dcf4d786a51b.jpg", "https://cdn.discordapp.com/attachments/940686820939800636/955281462217809920/8db24bca03652f702a4614e01f696e00.jpg", "https://cdn.discordapp.com/attachments/940686820939800636/955281462008086588/383fdfe7a6af6310ca3492671cd1e1bf.jpg", ];
+
+module.exports = {lion_pictures};

@@ -1,0 +1,3 @@
+var wolf_pictures = ["https://cdn.discordapp.com/attachments/940686820939800636/955281463274778654/dfb3a7c952c1c0f0737007ec4afbc115.jpg", "https://cdn.discordapp.com/attachments/940686820939800636/955281463044100136/4d15100056a51fc7a5673f0b03504d31.jpg", "https://cdn.discordapp.com/attachments/940686820939800636/955281462805004378/b5c102b121aea004ea3dd522942e2f45.jpg"];
+
+module.exports = {wolf_pictures};
