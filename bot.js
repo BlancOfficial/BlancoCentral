@@ -14,7 +14,6 @@ const {lion_pictures} = require('./lion_module.js');
 const {panda_pictures} = require('./panda_module.js');
 const {wolf_pictures} = require('./wolf_module.js');
 const {server_stat} = require('./server_module.js');
-//const {ver_info} = require('./package.json');
 
 // Run dotenv
 require('dotenv').config();
@@ -39,4 +38,4 @@ bot_reply("awoo", wolf_pictures);
 bot_reply("a", ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]);
 bot_reply("info", ["https://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png https://cdn.discordapp.com/attachments/955121751094882336/955532320050380881/Info.png"]);
 bot_reply("help", ["https://cdn.discordapp.com/attachments/955121751094882336/955532320050380881/Info.png"]);
-bot_reply("Server stats", server_stat);
+bot_reply("server stats", server_stat);
