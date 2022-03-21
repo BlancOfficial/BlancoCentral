@@ -1,3 +1,3 @@
-var rabbit_pictures = []
+var rabbit_pictures = ["https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/easter-bunny-origins-1581358909.jpg?crop=1.00xw:0.752xh;0,0.0481xh&resize=1200:*", "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-476744133-scaled.jpg", "https://www.riddle.com/imageservice/q_80,f_auto,c_fill,w_960,h_540/ullz1csc1jqfnoo4fn2t", "https://i.pinimg.com/originals/02/07/b6/0207b6b5817da1984c2f08693122f32e.jpg", "https://www.rd.com/wp-content/uploads/2021/04/GettyImages-1151644281-scaled.jpg?fit=696,465", "https://wallpaperaccess.com/full/157353.jpg", "https://i.pinimg.com/originals/ee/74/e3/ee74e39fc1a451f495d8ac54bbd665d0.jpg", "https://pixfeeds.com/images/21/509352/1200-513384940-cute-little-female-bunny.jpg"]
 
 module.exports = {rabbit_pictures};
