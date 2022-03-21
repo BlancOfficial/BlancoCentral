@@ -11,7 +11,8 @@
   "license": "BlancLTD",
   "dependencies": {
     "discord.js": "^13.6.0",
-    "dotenv": "^16.0.0"
+    "dotenv": "^16.0.0",
+    "systeminformation": "^5.11.9"
   },
   "devDependencies": {
     "eslint": "^8.11.0"
