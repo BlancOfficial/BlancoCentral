@@ -10,4 +10,4 @@ Discord.js Module has been uploaded, god bless github desktop not having a file 
 # To run the file ensure node.js is downloaded 
 (Link to download https://nodejs.org/en/download/releases/)
 
-Then run the run.batch file
+Then run the batch file (run.bat)
