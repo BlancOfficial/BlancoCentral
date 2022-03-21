@@ -37,4 +37,6 @@ bot_reply("lion", lion_pictures);
 bot_reply("awoo", wolf_pictures);
 bot_reply("a", ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]);
 bot_reply("info", ["https://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png https://cdn.discordapp.com/attachments/955121751094882336/955532320050380881/Info.png"]);
-//bot_reply("info", ver_info);
+bot_reply("help", ["https://cdn.discordapp.com/attachments/955121751094882336/955532320050380881/Info.png"]);
+
+//bot_reply("Server_stats", ver_info);
