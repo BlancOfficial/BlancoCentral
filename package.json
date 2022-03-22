@@ -1,8 +1,8 @@
 {
   "name": "BlancoBot",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "An 'Edit to Purpose', multi use bot",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,6 +10,9 @@
   "author": "The Ritualist and The Kraken",
   "license": "BlancLTD",
   "dependencies": {
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.29.0",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
     "systeminformation": "^5.11.9"
