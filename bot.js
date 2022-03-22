@@ -6,15 +6,15 @@ function bot_reply(user_input, bot_output)
   }})
 }
 
-const {cat_pictures} = require('./cat_module.js');
-const {fox_pictures} = require('./fox_module.js');
-const {ferret_pictures} = require('./ferret_module.js');
-const {gura_pictures} = require('./gura_module.js');
-const {lion_pictures} = require('./lion_module.js');
-const {panda_pictures} = require('./panda_module.js');
-const {wolf_pictures} = require('./wolf_module.js');
-const {rabbit_pictures} = require('./rabbit_module.js');
-const {fish_pictures} = require('./fish_module.js');
+const {cat_pictures} = require('./module_store/cat_module.js');
+const {fox_pictures} = require('./module_store/fox_module.js');
+const {ferret_pictures} = require('./module_store/ferret_module.js');
+const {gura_pictures} = require('./module_store/gura_module.js');
+const {lion_pictures} = require('./module_store/lion_module.js');
+const {panda_pictures} = require('./module_store/panda_module.js');
+const {wolf_pictures} = require('./module_store/wolf_module.js');
+const {rabbit_pictures} = require('./module_store/rabbit_module.js');
+const {fish_pictures} = require('./module_store/fish_module.js');
 
 // Run dotenv
 require('dotenv').config();
