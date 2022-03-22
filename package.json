@@ -2,7 +2,7 @@
   "name": "BlancoBot",
   "version": "1.0.6",
   "description": "An 'Edit to Purpose', multi use bot",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
