@@ -1,7 +1,7 @@
 function bot_reply(user_input, bot_output)
     {
     client.on('message', msg => {
-      if ((msg.content).toLowerCase() === user_input) {
+      if ((msg.content).toLowerCase() === (user_input)toLowerCase()) {
         msg.reply(bot_output[Math.floor(Math.random()*bot_output.length)]);
   }})
 }
@@ -37,7 +37,7 @@ bot_reply("panda", panda_pictures);
 bot_reply("lion", lion_pictures);
 bot_reply("awoo", wolf_pictures);
 bot_reply("bnuy", rabbit_pictures);
-bot_reply("Meemee", fish_pictures);
+bot_reply("meemee", fish_pictures);
 bot_reply("a", ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]);
 bot_reply("info", ["Currently running v1.0.6 of BlancoBot\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\nhttps://cdn.discordapp.com/attachments/806288700736405506/955903576985718784/Infov1.0.6.png"]);
 bot_reply("help", ["https://cdn.discordapp.com/attachments/806288700736405506/955903576985718784/Infov1.0.6.png"]);
