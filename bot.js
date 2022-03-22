@@ -17,6 +17,16 @@ function bot_reply(user_input, bot_output)
     client.on('message', msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
         msg.reply(bot_output[Math.floor(Math.random()*bot_output.length)]);
+        const row = new MessageActionRow()
+			.addComponents(
+				new MessageButton()
+					.setCustomId('Again?')
+					.setLabel('Again?')
+					.setStyle('PRIMARY'),
+			);
+
+		await bot_reply(user_input, bot_output);
+	}
   }})
 }
 
