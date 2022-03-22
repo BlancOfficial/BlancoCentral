@@ -1,16 +1,3 @@
-function bot_reply(user_input, bot_output)
-    {
-    client.on('message', msg => {
-      if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
-        msg.reply(bot_output[Math.floor(Math.random()*bot_output.length)]);
-  }})
-}
-
-
-client.commands = new Collection();
-const moduleFiles = fs.readdirSync('./module_store').filter(file => file.endsWith('_module.js'));
-
-
 const {cat_pictures} = require('./module_store/cat_module.js');
 const {fox_pictures} = require('./module_store/fox_module.js');
 const {ferret_pictures} = require('./module_store/ferret_module.js');
@@ -20,14 +7,19 @@ const {panda_pictures} = require('./module_store/panda_module.js');
 const {wolf_pictures} = require('./module_store/wolf_module.js');
 const {rabbbit_pictures} = require('./module_store/rabbit_module.js');
 const {fish_pictures} = require('./module_store/fish_module.js');
-
-// Run dotenv
+const Discord = require('discord.js');
+const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 
-const Discord = require('discord.js');
-const { Client, Intents } = require('discord.js');
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
-const fs = require('node:fs');
+
+function bot_reply(user_input, bot_output)
+    {
+    client.on('message', msg => {
+      if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
+        msg.reply(bot_output[Math.floor(Math.random()*bot_output.length)]);
+  }})
+}
+
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
