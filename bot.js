@@ -20,7 +20,7 @@ const {fish_pictures} = require('./fish_module.js');
 require('dotenv').config();
 
 const Discord = require('discord.js');
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
+const client = new Client({ intents: [Intents.FLAGS.GUILDS] });
 
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
