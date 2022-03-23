@@ -7,7 +7,9 @@ const {panda_pictures} = require('./module_store/panda_module.js');
 const {wolf_pictures} = require('./module_store/wolf_module.js');
 const {rabbit_pictures} = require('./module_store/rabbit_module.js');
 const {fish_pictures} = require('./module_store/fish_module.js');
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js');
+const {MessageActionRow} = require('discord.js');
+const {MessageButton} = require('discord.js');
+const disbut = require('discord-buttons');
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
@@ -17,8 +19,11 @@ function bot_reply(user_input, bot_output)
     {
     client.on('message', msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
-        msg.reply(bot_output[Math.floor(Math.random()*bot_output.length)]);
-
+        let button = new disbut.MessageButton()
+            .setCustomId("repeat_request"))
+            .setLabel(user_input + " Again?")
+            .setStyle("PRIMARY")
+        msg.reply(bot_output[Math.floor(Math.random()*bot_output.length)], button);
     }})
 }
 
