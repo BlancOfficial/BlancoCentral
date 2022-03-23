@@ -40,9 +40,9 @@ function bot_reply(user_input, bot_output)
             client.on('interactionCreate', interaction => {
                 if (interaction.isButton()) {
                     if (interaction.customId === "repeat") {
-                        console.log("Test Pass")
                         interaction.reply({
                             content: String(bot_output[Math.floor(Math.random() * bot_output.length)]),
+                            ephemeral: true,
                             components: [
                                 {
                                     "type": 1,
@@ -81,5 +81,5 @@ bot_reply("awoo", wolf_pictures);
 bot_reply("bnuy", rabbit_pictures);
 bot_reply("meemee", fish_pictures);
 bot_reply("a", ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]);
-bot_reply("info", ["Currently running v1.0.7 of BlancoBot\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\nhttps://cdn.discordapp.com/attachments/806288700736405506/955903576985718784/Infov1.0.6.png"]);
-bot_reply("help", ["https://cdn.discordapp.com/attachments/806288700736405506/955903576985718784/Infov1.0.6.png"]);
+bot_reply("info", ["Currently running v1.0.7 of BlancoBot\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\nhttps://cdn.discordapp.com/attachments/602437234834014219/956101213756203048/info_v1.0.7.png"]);
+bot_reply("help", ["https://cdn.discordapp.com/attachments/602437234834014219/956101213756203048/info_v1.0.7.png"]);
