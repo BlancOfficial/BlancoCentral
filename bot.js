@@ -18,8 +18,21 @@ function bot_reply(user_input, bot_output)
     {
     client.on('message', msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
-          msg.reply((bot_output[Math.floor(Math.random()*bot_output.length)]))
 
+          callback: async () => {
+            const row = new MessageActionRow()
+                .addComponents(
+                    new MessageButton()
+                        .setCustomId("repeat_action")
+                        .setLabel(user_input + "Again?")
+                        .setStyle("SUCCESS")
+                )
+            msg.reply({
+                content: (bot_output[Math.floor(Math.random()*bot_output.length)]),
+                components: [row]
+
+            })
+        }
     }})
 }
 
