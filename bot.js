@@ -34,7 +34,6 @@ const update_info = "https://cdn.discordapp.com/attachments/955121751094882336/9
 
 function inter_reply(module_var, output_list){
     try{
-        console.log("Checkpoint 1")
         interaction.reply({
             content: String(output_list[Math.floor(Math.random() * output_list.length)]),
             ephemeral: true,
@@ -44,7 +43,6 @@ function inter_reply(module_var, output_list){
         })
     }
     catch{
-        console.log("Checkpoint 2")
     client.on('interactionCreate', interaction => {
         if (interaction.isButton()) {
             if (interaction.customId === module_var + "_repeat") {
