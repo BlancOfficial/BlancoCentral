@@ -13,6 +13,7 @@ const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
+const update_info = "https://cdn.discordapp.com/attachments/955121751094882336/956226641514872902/Info_v1.0.8.png"
 
 
 function inter_reply(module_var, output_list){
@@ -87,5 +88,5 @@ bot_reply("awoo", wolf_pictures);
 bot_reply("bnuy", rabbit_pictures);
 bot_reply("meemee", fish_pictures);
 bot_reply("a", ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]);
-bot_reply("info", ["Currently running v1.0.8 of BlancoBot\nMajor Image Bank Update\nYou Can now repeat a command by clicking the green button...\nButton times out after 10 seconds :P\nThe Repeated commands are all hidden and only you can see them\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\nhttps://cdn.discordapp.com/attachments/602437234834014219/956101213756203048/info_v1.0.7.png"]);
-bot_reply("help", ["https://cdn.discordapp.com/attachments/602437234834014219/956101213756203048/info_v1.0.7.png"]);
+bot_reply("info", ["Currently running v1.0.8 of BlancoBot\nMajor Image Bank Update\nYou Can now repeat a command by clicking the green button...\nButton times out after 10 seconds :P\nThe Repeated commands are all hidden and only you can see them\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\n" + update_info]);
+bot_reply("help", [update_info]);
