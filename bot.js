@@ -13,38 +13,30 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 
-
 function bot_reply(user_input, bot_output)
     {
     client.on('messageCreate', msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
 
-            const row = new MessageActionRow()
-                .addComponents(
-                    new MessageButton()
-                        .setCustomId("repeat_action")
-                        .setLabel(user_input + " Again?")
-                        .setStyle("SUCCESS"),
-                )
-
-            const collector = msg.createMessageComponentCollector({ componentType: 'repeat_action', time: 15000 });
-
-
             msg.reply({
-                content: (bot_output[Math.floor(Math.random()*bot_output.length)]),
-                components: [row],
+                content: String(bot_output[Math.floor(Math.random() * bot_output.length)]),
+                components: [
+                    {
+                        "type": 1,
+                        "components": [
+                            {
+                                "type": 2,
+                                "label": user_input + " Again?",
+                                "style": 'SUCCESS',
+                                "custom_id": "repeat"
+                            }
+                        ]
+                    
+                    }
+                ]
                 })
+            
 
-
-            collector.on("collect", i => {
-                    i.reply({
-                        ephemeral: true,
-                        content: bot_reply(user_input, bot_output)
-                    })
-                })
-            collector.on("end", collected => {
-                console.log('Collected ${collected.size} interactions')
-            })
             }
         })
     }       
