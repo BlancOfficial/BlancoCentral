@@ -16,15 +16,14 @@ require('dotenv').config();
 
 function bot_reply(user_input, bot_output)
     {
-    client.on('message', msg => {
+    client.on('messageCreate', msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
 
-          callback: async () => {
             const row = new MessageActionRow()
                 .addComponents(
                     new MessageButton()
                         .setCustomId("repeat_action")
-                        .setLabel(user_input + "Again?")
+                        .setLabel(user_input + " Again?")
                         .setStyle("SUCCESS"),
                 )
             msg.reply({
@@ -32,7 +31,7 @@ function bot_reply(user_input, bot_output)
                 components: [row],
                 })
             }
-        }})
+        })
     }       
 
 
