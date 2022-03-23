@@ -26,10 +26,25 @@ function bot_reply(user_input, bot_output)
                         .setLabel(user_input + " Again?")
                         .setStyle("SUCCESS"),
                 )
+
+            const collector = msg.createMessageComponentCollector({ componentType: 'repeat_action', time: 15000 });
+
+
             msg.reply({
                 content: (bot_output[Math.floor(Math.random()*bot_output.length)]),
                 components: [row],
                 })
+
+
+            collector.on("collect", i => {
+                    i.reply({
+                        ephemeral: true,
+                        content: bot_reply(user_input, bot_output)
+                    })
+                })
+            collector.on("end", collected => {
+                console.log('Collected ${collected.size} interactions')
+            })
             }
         })
     }       
