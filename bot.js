@@ -14,7 +14,33 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 
 
-function bot_reply(user_input, bot_output)
+function inter_reply(expected_output){
+    client.on('interactionCreate', interaction => {
+        if (interaction.isButton()) {
+            if (interaction.customId === expected_output + "repeat") {
+                interaction.reply({
+                    content: String(expected_output[Math.floor(Math.random() * expected_output.length)]),
+                    ephemeral: true,
+                    components: [
+                        {
+                            "type": 1,
+                            "components": [
+                                {
+                                    "type": 2,
+                                    "label": expected_output + " Again?",
+                                    "style": 'SUCCESS',
+                                    "custom_id": expected_output + "repeat"
+                                }
+                            ]
+                        }
+                    ]
+                })
+            }}
+        })
+}
+
+
+function bot_reply(bot_output)
     {
     client.on('messageCreate', msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
@@ -27,7 +53,7 @@ function bot_reply(user_input, bot_output)
                         "components": [
                             {
                                 "type": 2,
-                                "label": user_input + " Again?",
+                                "label": bot_output + " Again?",
                                 "style": 'SUCCESS',
                                 "custom_id": "repeat"
                             }
@@ -36,29 +62,7 @@ function bot_reply(user_input, bot_output)
                     }
                 ]
                 })
-            
-            client.on('interactionCreate', interaction => {
-                if (interaction.isButton()) {
-                    if (interaction.customId === "repeat") {
-                        interaction.reply({
-                            content: String(bot_output[Math.floor(Math.random() * bot_output.length)]),
-                            ephemeral: true,
-                            components: [
-                                {
-                                    "type": 1,
-                                    "components": [
-                                        {
-                                            "type": 2,
-                                            "label": user_input + " Again?",
-                                            "style": 'SUCCESS',
-                                            "custom_id": "repeat"
-                                        }
-                                    ]
-                                }
-                            ]
-                        })
-                    }}
-                })
+                inter_reply(user_input, bot_output)
             }
         })
     }       
