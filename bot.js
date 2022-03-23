@@ -13,6 +13,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 
+
 function bot_reply(user_input, bot_output)
     {
     client.on('messageCreate', msg => {
@@ -36,7 +37,28 @@ function bot_reply(user_input, bot_output)
                 ]
                 })
             
-
+            client.on('interactionCreate', interaction => {
+                if (interaction.isButton()) {
+                    if (interaction.customId === "repeat") {
+                        console.log("Test Pass")
+                        interaction.reply({
+                            content: String(bot_output[Math.floor(Math.random() * bot_output.length)]),
+                            components: [
+                                {
+                                    "type": 1,
+                                    "components": [
+                                        {
+                                            "type": 2,
+                                            "label": user_input + " Again?",
+                                            "style": 'SUCCESS',
+                                            "custom_id": "repeat"
+                                        }
+                                    ]
+                                }
+                            ]
+                        })
+                    }}
+                })
             }
         })
     }       
