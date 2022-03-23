@@ -20,7 +20,7 @@ function bot_reply(user_input, bot_output)
     client.on('message', msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
         let button = new disbut.MessageButton()
-            .setCustomId("repeat_request"))
+            .setCustomId("repeat_request")
             .setLabel(user_input + " Again?")
             .setStyle("PRIMARY")
         msg.reply(bot_output[Math.floor(Math.random()*bot_output.length)], button);
