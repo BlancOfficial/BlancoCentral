@@ -29,6 +29,7 @@ const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
+
 const update_info = "https://cdn.discordapp.com/attachments/955121751094882336/956226641514872902/Info_v1.0.8.png"
 
 
