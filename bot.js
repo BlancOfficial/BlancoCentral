@@ -26,13 +26,13 @@ function bot_reply(user_input, bot_output)
                         .setCustomId("repeat_action")
                         .setLabel(user_input + "Again?")
                         .setStyle("SUCCESS")
-                )
-            msg.reply({
-                content: (bot_output[Math.floor(Math.random()*bot_output.length)]),
-                components: [row]
+                )}
+        msg.reply({
+            content: (bot_output[Math.floor(Math.random()*bot_output.length)]),
+            components: [row]
 
-            })
-        }
+        })
+    
     }})
 }
 
