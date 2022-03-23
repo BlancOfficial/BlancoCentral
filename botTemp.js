@@ -1,4 +1,4 @@
-function interaction_buttons(module_var){
+ function interaction_buttons(module_var){
     return{
             "type": 1,
             "components": [
@@ -11,6 +11,10 @@ function interaction_buttons(module_var){
             ]
         }
     }
+
+//var module_list = [""]
+//for (var i = 0; i < module_list.length; ++i){}
+//"./module_store/" + module_variable + "_module.js"
 
 
 const {cat_pictures} = require('./module_store/cat_module.js');
