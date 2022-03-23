@@ -25,16 +25,15 @@ function bot_reply(user_input, bot_output)
                     new MessageButton()
                         .setCustomId("repeat_action")
                         .setLabel(user_input + "Again?")
-                        .setStyle("SUCCESS")
-                )}
-        msg.reply({
-            content: (bot_output[Math.floor(Math.random()*bot_output.length)]),
-            components: [row]
-
-        })
-    
-    }})
-}
+                        .setStyle("SUCCESS"),
+                )
+            msg.reply({
+                content: (bot_output[Math.floor(Math.random()*bot_output.length)]),
+                components: [row],
+                })
+            }
+        }})
+    }       
 
 
 client.on('ready', () => {
