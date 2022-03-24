@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "The Ritualist and The Kraken and... a God?",
+  "author": "The Ritualist and The Kraken and... a god?",
   "license": "BlancLTD",
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
