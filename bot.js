@@ -23,7 +23,7 @@ require('dotenv').config();
 var update_info = "https://cdn.discordapp.com/attachments/955121751094882336/956226641514872902/Info_v1.0.8.png"
 
 
-function inter_reply(module_var, output_list){
+async function inter_reply(module_var, output_list){
     try{
         interaction.reply({
             content: String(output_list[Math.floor(Math.random() * output_list.length)]),
@@ -34,7 +34,7 @@ function inter_reply(module_var, output_list){
         })
     }
     catch{
-    client.on('interactionCreate', interaction => {
+    client.on('interactionCreate', async interaction => {
         if (interaction.isButton()) {
             if (interaction.customId === module_var + "_repeat") {
                 await interaction.reply({
