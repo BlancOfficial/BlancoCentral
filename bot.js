@@ -81,7 +81,6 @@ user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", 
 module_dire = ["cat", "koala", "fox", "ferret", "gura", "panda", "lion", "wolf", "rabbit", "fish"]
 
 for (var i = 0; i < user_msg.length; ++i) {
-    console.log(require('./module_store/' + module_dire[i] + '_module.js'))
     bot_reply(user_msg[i], (require('./module_store/' + module_dire[i] + '_module.js')))
 }
 
