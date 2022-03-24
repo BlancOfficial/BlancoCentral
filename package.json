@@ -8,7 +8,7 @@
   },
   "keywords": [],
   "author": "The Ritualist and The Kraken and... a god?",
-  "license": "BlancLTD",
+  "license": "BlanCorp",
   "dependencies": {
     "@discordjs/builders": "^0.12.0",
     "@discordjs/rest": "^0.3.0",
