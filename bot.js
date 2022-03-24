@@ -37,7 +37,7 @@ function inter_reply(module_var, output_list){
     client.on('interactionCreate', interaction => {
         if (interaction.isButton()) {
             if (interaction.customId === module_var + "_repeat") {
-                interaction.reply({
+                await interaction.reply({
                     content: String(output_list[Math.floor(Math.random() * output_list.length)]),
                     ephemeral: true,
                     components: [
