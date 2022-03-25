@@ -1,19 +1,3 @@
-function interaction_buttons(module_var){
-    return{
-            "type": 1,
-            "components": [
-                {
-                    "type": 2,
-                    "label": module_var + " Again?",
-                    "style": 'SUCCESS',
-                    "custom_id": module_var + "_repeat"
-                }
-            ]
-        }
-    }
-
-
-
 const {MessageActionRow} = require('discord.js');
 const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
@@ -24,16 +8,6 @@ var update_info = "https://cdn.discordapp.com/attachments/955121751094882336/956
 
 
 async function inter_reply(module_var, output_list){
-    try{
-        interaction.reply({
-            content: String(output_list[Math.floor(Math.random() * output_list.length)]),
-            ephemeral: true,
-            components: [
-                interaction_buttons(module_var)
-            ]
-        })
-    }
-    catch{
     client.on('interactionCreate', async interaction => {
         if (interaction.isButton()) {
             if (interaction.customId === module_var + "_repeat") {
@@ -41,12 +15,22 @@ async function inter_reply(module_var, output_list){
                     content: String(output_list[Math.floor(Math.random() * output_list.length)]),
                     ephemeral: true,
                     components: [
-                        interaction_buttons(module_var)
+                        {
+                            "type": 1,
+                            "components": [
+                                {
+                                    "type": 2,
+                                    "label": module_var + " Again?",
+                                    "style": 'SUCCESS',
+                                    "custom_id": module_var + "_repeat"
+                                }
+                            ]
+                        }
                     ]
                 })
             }}
         })
-}}
+}
 
 function bot_reply(user_input, bot_output, user_only_visible = false)
     {
@@ -57,10 +41,20 @@ function bot_reply(user_input, bot_output, user_only_visible = false)
                 content: String(bot_output[Math.floor(Math.random() * bot_output.length)]),
                 ephemeral: user_only_visible,
                 components: [
-                        interaction_buttons(user_input)
+                    {
+                        "type": 1,
+                        "components": [
+                            {
+                                "type": 2,
+                                "label": (user_input).toLowerCase() + " Again?",
+                                "style": 'SUCCESS',
+                                "custom_id": (user_input).toLowerCase() + "_repeat"
+                            }
+                        ]
+                    }
                 ]})
 
-            inter_reply((msg.content).toLowerCase(), bot_output);
+            inter_reply((user_input).toLowerCase(), bot_output)
             }
         })
     }       
@@ -80,10 +74,15 @@ bot_reply("help", [update_info]);
 user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee"]
 module_dire = ["cat", "koala", "fox", "ferret", "gura", "panda", "lion", "wolf", "rabbit", "fish"]
 
+require('events').EventEmitter.defaultMaxListeners = 15;
 for (var i = 0; i < user_msg.length; ++i) {
-    bot_reply(user_msg[i], (require('./module_store/' + module_dire[i] + '_module.js')))
-}
+    bot_reply(user_msg[i], require('./module_store/' + module_dire[i] + '_module.js'))
+    }       
 
 if (user_msg.length != module_dire.length) {
     console.log("There is an issue with inputs, oh no")
 }
+
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error);
+});
