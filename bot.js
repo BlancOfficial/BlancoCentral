@@ -72,16 +72,13 @@ bot_reply("help", [update_info]);
 
 
 user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee"]
-module_dire = ["cat", "koala", "fox", "ferret", "gura", "panda", "lion", "wolf", "rabbit", "fish"]
+module_dire = {catto : "cat", koko : "koala", foxy : "fox", ferret : "ferret", guwr : "gura", panda : "panda", lion : "lion", awoo : "wolf", bnuy : "rabbit", meemee : "fish"}
 
 require('events').EventEmitter.defaultMaxListeners = 15;
 for (var i = 0; i < user_msg.length; ++i) {
-    bot_reply(user_msg[i], require('./module_store/' + module_dire[i] + '_module.js'))
+    bot_reply(user_msg[i], require('./module_store/' + module_dire[String(user_msg[i])] + '_module.js'))
     }       
 
-if (user_msg.length != module_dire.length) {
-    console.log("There is an issue with inputs, oh no")
-}
 
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error);
