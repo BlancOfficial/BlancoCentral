@@ -4,7 +4,10 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 
-var update_info = "https://cdn.discordapp.com/attachments/955121751094882336/956226641514872902/Info_v1.0.8.png"
+var update_info = "https://cdn.discordapp.com/attachments/957283103729135668/957288852756762644/info_v1.0.9.png"
+version_Bot = "v1.0.9"
+update_log = "***UPDATE LOG***\n```Major Image Bank Update\nYou Can now repeat a command by clicking the green button...\nButton times out after 10 seconds :P\nThe Repeated commands are all hidden and only you can see them```"
+
 
 function image_return(module_var, choices, repeat_image){
     choices = choices || 1;
@@ -47,6 +50,7 @@ function image_return(module_var, choices, repeat_image){
 async function inter_reply(module_var, output_list){
     client.on('interactionCreate', async interaction => {
         if (interaction.isButton()) {
+            var image_data = []
             if (interaction.customId === module_var + "_repeat") {
                 var image_data = image_return(module_var, 2, String(output_list[Math.floor(Math.random() * output_list.length)]))
                 await interaction.reply({
@@ -60,12 +64,12 @@ async function inter_reply(module_var, output_list){
 
             }
             if (interaction.customId === "reveal") {
-                if (image_data === undefined) {
+                if (image_data[1] === undefined) {
                     image_data = ["Error", "This feature has not been implemented yet TwT"];
                 }
                 await interaction.reply({
                     content: String(image_data[1]),
-                    ephemeral: false,
+                    ephemeral: true,
                 })}
     })
 }
@@ -95,7 +99,7 @@ client.on('ready', () => {
 client.login(process.env.DISCORD_TOKEN);
 
 bot_reply("a", ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]);
-bot_reply("info", ["Currently running v1.0.9 of BlancoBot\n\n***UPDATE LOG***\n```Major Image Bank Update\nYou Can now repeat a command by clicking the green button...\nButton times out after 10 seconds :P\nThe Repeated commands are all hidden and only you can see them```\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\n" + update_info]);
+bot_reply("info", ["Currently running" + version_Bot +  "of BlancoBot\n\n" + update_log + "\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\n" + update_info]);
 bot_reply("help", [update_info]);
 
 
