@@ -44,17 +44,7 @@ function bot_reply(user_input, bot_output, user_only_visible = false)
                 content: String(bot_output[Math.floor(Math.random() * bot_output.length)]),
                 ephemeral: user_only_visible,
                 components: [
-                    {
-                        "type": 1,
-                        "components": [
-                            {
-                                "type": 2,
-                                "label": (user_input).toLowerCase() + " Again?",
-                                "style": 'SUCCESS',
-                                "custom_id": (user_input).toLowerCase() + "_repeat"
-                            }
-                        ]
-                    }
+                    image_return(user_input)
                 ]})
 
             inter_reply((user_input).toLowerCase(), bot_output)
