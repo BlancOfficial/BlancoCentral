@@ -6,7 +6,19 @@ require('dotenv').config();
 
 var update_info = "https://cdn.discordapp.com/attachments/955121751094882336/956226641514872902/Info_v1.0.8.png"
 
-function image_return(module_var){}
+function image_return(module_var){
+    return {
+        "type": 1,
+        "components": [
+            {
+                "type": 2,
+                "label": module_var + " Again?",
+                "style": 'SUCCESS',
+                "custom_id": module_var + "_repeat"
+            }
+        ]
+    }
+}
 
 async function inter_reply(module_var, output_list){
     client.on('interactionCreate', async interaction => {
@@ -16,7 +28,7 @@ async function inter_reply(module_var, output_list){
                     content: String(output_list[Math.floor(Math.random() * output_list.length)]),
                     ephemeral: true,
                     components: [
-
+                        image_return(module_var)
                     ]
                 })
             }}
