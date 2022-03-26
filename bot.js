@@ -1,3 +1,4 @@
+const { count } = require('console');
 const {MessageActionRow} = require('discord.js');
 const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
@@ -8,7 +9,7 @@ save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/95737329
 var update_info = "https://cdn.discordapp.com/attachments/806288700736405506/957391007132029069/info_v1.1.0.png"
 version_Bot = "v1.1.0"
 update_log = "***UPDATE LOG***\n```Repeated images that had previously been hidden can now be shared in server by pressing the 'Reveal?' button...\n    This feature was soo much harder to figure out than I'd thought it'd be```"
-count = -1
+var countI = 0
 
 
 client.on('guildCreate', guild => {
@@ -36,7 +37,7 @@ function image_return(module_var, choices, repeat_image){
         }
     }
     else if (choices == 2){
-        count++
+        countI++
         row = {
             "type": 1,
             "components": [
@@ -50,8 +51,8 @@ function image_return(module_var, choices, repeat_image){
                     "type": 2,
                     "label": module_var + " Reveal?",
                     "style": 'SUCCESS',
-                    "custom_id": String(count) + "_reveal"
-                },
+                    "custom_id": "_reveal"
+                }
             ]
         }
         return [row, repeat_image]
@@ -59,31 +60,6 @@ function image_return(module_var, choices, repeat_image){
     }
 };
 
-async function inter_reply(module_var, output_list, image_list = save_list){
-    client.on('interactionCreate', async interaction => {
-        if (interaction.isButton()) {
-            if (interaction.customId === module_var + "_repeat") {
-                var image_data = image_return(module_var, 2, String(output_list[Math.floor(Math.random() * output_list.length)]))
-                save_list.push(image_data[1])
-                await interaction.reply({
-                    content: image_data[1],
-                    ephemeral: true,
-                    components: [
-                        image_data[0]
-                    ]
-                })
-                }
-
-
-            if (interaction.customId === String(count) + "_reveal") {
-                await interaction.reply({
-                    content: String(image_list[count + 1]),
-                    ephemeral: false,
-                })
-            }
-        }
-    })
-}
 
 async function bot_reply(user_input, bot_output, user_only_visible = false)
     {
@@ -97,7 +73,33 @@ async function bot_reply(user_input, bot_output, user_only_visible = false)
                     image_return(user_input)
                 ]})
 
-            inter_reply((user_input).toLowerCase(), bot_output)
+            client.on('interactionCreate', async interaction => {
+                if (interaction.isButton()) {
+                    if (interaction.customId === (user_input).toLowerCase() + "_repeat") {
+                        var image_split = image_return((user_input).toLowerCase(), 2, String(bot_output[Math.floor(Math.random() * bot_output.length)]))
+                        save_list.push(image_split[1])
+                        await interaction.reply({
+                            content: image_split[1],
+                            ephemeral: true,
+                            components: [
+                                image_split[0]
+                            ]
+                        })
+                    }
+        
+                    if (interaction.customId === "_reveal"){
+                        await interaction.reply({
+                            content: save_list[countI],
+                            ephemeral: false
+                        })
+                    }
+                    else {
+                        interaction.reply({
+                            "content" : save_list[0]
+                        })
+                    }
+                }
+            })
             }
         })
     };
