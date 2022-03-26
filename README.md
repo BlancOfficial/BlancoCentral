@@ -5,7 +5,7 @@ The _.env_ Discord Token has been uploaded, here is to trusting that others won'
 
 All the _module.js_ Files withint the _module_store_ folder are storage banks for bot links
 
-The module_test.py file is a temporary fix to having links that are too long, find a more permanent fix ASAP
+Make sure not to add image links of more than 100 characters long
 
 _Discord.js_ Module has been uploaded, god bless github desktop not having a file upload limit
 
