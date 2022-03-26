@@ -6,36 +6,71 @@ require('dotenv').config();
 
 var update_info = "https://cdn.discordapp.com/attachments/955121751094882336/956226641514872902/Info_v1.0.8.png"
 
-function image_return(module_var){
-    return {
-        "type": 1,
-        "components": [
-            {
-                "type": 2,
-                "label": module_var + " Again?",
-                "style": 'SUCCESS',
-                "custom_id": module_var + "_repeat"
-            }
-        ]
+function image_return(module_var, choices, repeat_image){
+    choices = choices || 1;
+    if (choices == 1){
+        return {
+            "type": 1,
+            "components": [
+                {
+                    "type": 2,
+                    "label": module_var + " Again?",
+                    "style": 'SUCCESS',
+                    "custom_id": module_var + "_repeat"
+                }
+            ]
+        }
     }
-}
+    else if (choices == 2){
+        row = {
+            "type": 1,
+            "components": [
+                {
+                    "type": 2,
+                    "label": module_var + " Again?",
+                    "style": 'SUCCESS',
+                    "custom_id": module_var + "_repeat"
+                },
+                {
+                    "type": 2,
+                    "label": module_var + " reveal?",
+                    "style": 'SUCCESS',
+                    "custom_id": "reveal"
+                }
+            ]
+        }
+        return [row, repeat_image]
+        
+    }
+};
 
 async function inter_reply(module_var, output_list){
     client.on('interactionCreate', async interaction => {
         if (interaction.isButton()) {
             if (interaction.customId === module_var + "_repeat") {
+                var image_data = image_return(module_var, 2, String(output_list[Math.floor(Math.random() * output_list.length)]))
                 await interaction.reply({
                     content: String(output_list[Math.floor(Math.random() * output_list.length)]),
                     ephemeral: true,
                     components: [
-                        image_return(module_var)
+                        image_data[0]
                     ]
                 })
-            }}
-        })
+                }
+
+            }
+            if (interaction.customId === "reveal") {
+                if (image_data === undefined) {
+                    image_data = ["Error", "This feature has not been implemented yet TwT"];
+                }
+                await interaction.reply({
+                    content: String(image_data[1]),
+                    ephemeral: false,
+                })}
+    })
 }
 
-function bot_reply(user_input, bot_output, user_only_visible = false)
+async function bot_reply(user_input, bot_output, user_only_visible = false)
     {
     client.on('messageCreate', msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
@@ -50,7 +85,7 @@ function bot_reply(user_input, bot_output, user_only_visible = false)
             inter_reply((user_input).toLowerCase(), bot_output)
             }
         })
-    }       
+    };
 
 
 client.on('ready', () => {
