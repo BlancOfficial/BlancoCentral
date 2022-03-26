@@ -3,10 +3,21 @@ const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
+save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 
-var update_info = "https://cdn.discordapp.com/attachments/957283103729135668/957288852756762644/info_v1.0.9.png"
-version_Bot = "v1.0.9"
-update_log = "***UPDATE LOG***\n```Major Image Bank Update\nYou Can now repeat a command by clicking the green button...\nButton times out after 10 seconds :P\nThe Repeated commands are all hidden and only you can see them```"
+var update_info = "https://cdn.discordapp.com/attachments/806288700736405506/957391007132029069/info_v1.1.0.png"
+version_Bot = "v1.1.0"
+update_log = "***UPDATE LOG***\n```Repeated images that had previously been hidden can now be shared in server by pressing the 'Reveal?' button...\n    This feature was soo much harder to figure out than I'd thought it'd be```"
+count = -1
+
+
+client.on('guildCreate', guild => {
+    guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
+    guild.systemChannel.send("There is no set prefix, enter `info` to get started, Just like this : ")
+    guild.systemChannel.send(`info`)
+  });
+  
+
 
 
 function image_return(module_var, choices, repeat_image){
@@ -25,6 +36,7 @@ function image_return(module_var, choices, repeat_image){
         }
     }
     else if (choices == 2){
+        count++
         row = {
             "type": 1,
             "components": [
@@ -36,10 +48,10 @@ function image_return(module_var, choices, repeat_image){
                 },
                 {
                     "type": 2,
-                    "label": module_var + " reveal?",
+                    "label": module_var + " Reveal?",
                     "style": 'SUCCESS',
-                    "custom_id": "reveal"
-                }
+                    "custom_id": String(count) + "_reveal"
+                },
             ]
         }
         return [row, repeat_image]
@@ -47,14 +59,14 @@ function image_return(module_var, choices, repeat_image){
     }
 };
 
-async function inter_reply(module_var, output_list){
+async function inter_reply(module_var, output_list, image_list = save_list){
     client.on('interactionCreate', async interaction => {
         if (interaction.isButton()) {
-            var image_data = []
             if (interaction.customId === module_var + "_repeat") {
                 var image_data = image_return(module_var, 2, String(output_list[Math.floor(Math.random() * output_list.length)]))
+                save_list.push(image_data[1])
                 await interaction.reply({
-                    content: String(output_list[Math.floor(Math.random() * output_list.length)]),
+                    content: image_data[1],
                     ephemeral: true,
                     components: [
                         image_data[0]
@@ -62,25 +74,24 @@ async function inter_reply(module_var, output_list){
                 })
                 }
 
-            }
-            if (interaction.customId === "reveal") {
-                if (image_data[1] === undefined) {
-                    image_data = ["Error", "This feature has not been implemented yet TwT"];
-                }
+
+            if (interaction.customId === String(count) + "_reveal") {
                 await interaction.reply({
-                    content: String(image_data[1]),
-                    ephemeral: true,
-                })}
+                    content: String(image_list[count + 1]),
+                    ephemeral: false,
+                })
+            }
+        }
     })
 }
 
 async function bot_reply(user_input, bot_output, user_only_visible = false)
     {
-    client.on('messageCreate', msg => {
+    client.on('messageCreate', async msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
-
-            msg.reply({
-                content: String(bot_output[Math.floor(Math.random() * bot_output.length)]),
+            img_data = String(bot_output[Math.floor(Math.random() * bot_output.length)])
+            await msg.reply({
+                content: img_data,
                 ephemeral: user_only_visible,
                 components: [
                     image_return(user_input)
@@ -99,7 +110,7 @@ client.on('ready', () => {
 client.login(process.env.DISCORD_TOKEN);
 
 bot_reply("a", ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]);
-bot_reply("info", ["Currently running" + version_Bot +  "of BlancoBot\n\n" + update_log + "\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\n" + update_info]);
+bot_reply("info", ["Currently running " + version_Bot +  " of BlancoBot\n\n" + update_log + "\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\n" + update_info]);
 bot_reply("help", [update_info]);
 
 
