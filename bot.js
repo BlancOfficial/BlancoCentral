@@ -39,10 +39,7 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                                 "label": (user_input).toLowerCase() + " Again?",
                                 "style": 'SUCCESS',
                                 "custom_id": (user_input).toLowerCase() + "_repeat"
-                            }
-                        ]
-                    }
-                ]})
+                            }]}]})
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
@@ -68,24 +65,13 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                                             "label": (user_input).toLowerCase() + " Reveal?",
                                             "style": 'SUCCESS',
                                             "custom_id": "_reveal"
-                                        }
-                                    ]
-                                }
-                            ]
-                        })
-                    }
+                                        }]}]})}
         
                     if (interaction.customId === "_reveal"){
                         await interaction.reply({
                             "content": save_list[countI],
                             "ephemeral": false
-                        })
-                    }
-                }
-            })
-            }
-        })
-    };
+                        })}}})}})};
 
 
 client.on('ready', () => { //Checks whether bot is running at logs on startup
