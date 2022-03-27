@@ -20,47 +20,6 @@ client.on('guildCreate', guild => {
   
 
 
-
-function image_return(module_var, choices, repeat_image){
-    choices = choices || 1;
-    if (choices == 1){
-        return {
-            "type": 1,
-            "components": [
-                {
-                    "type": 2,
-                    "label": module_var + " Again?",
-                    "style": 'SUCCESS',
-                    "custom_id": module_var + "_repeat"
-                }
-            ]
-        }
-    }
-    else if (choices == 2){
-        countI++
-        row = {
-            "type": 1,
-            "components": [
-                {
-                    "type": 2,
-                    "label": module_var + " Again?",
-                    "style": 'SUCCESS',
-                    "custom_id": module_var + "_repeat"
-                },
-                {
-                    "type": 2,
-                    "label": module_var + " Reveal?",
-                    "style": 'SUCCESS',
-                    "custom_id": "_reveal"
-                }
-            ]
-        }
-        return [row, repeat_image]
-        
-    }
-};
-
-
 async function bot_reply(user_input, bot_output, user_only_visible = false)
     {
     client.on('messageCreate', async msg => {
@@ -70,32 +29,54 @@ async function bot_reply(user_input, bot_output, user_only_visible = false)
                 content: img_data,
                 ephemeral: user_only_visible,
                 components: [
-                    image_return(user_input)
+                    {
+                        "type": 1,
+                        "components": [
+                            {
+                                "type": 2,
+                                "label": (user_input).toLowerCase() + " Again?",
+                                "style": 'SUCCESS',
+                                "custom_id": (user_input).toLowerCase() + "_repeat"
+                            }
+                        ]
+                    }
                 ]})
 
             client.on('interactionCreate', async interaction => {
                 if (interaction.isButton()) {
                     if (interaction.customId === (user_input).toLowerCase() + "_repeat") {
-                        var image_split = image_return((user_input).toLowerCase(), 2, String(bot_output[Math.floor(Math.random() * bot_output.length)]))
-                        save_list.push(image_split[1])
+                        var image_current = String(bot_output[Math.floor(Math.random() * bot_output.length)])
+                        save_list.push(image_current)
+                        countI++
                         await interaction.reply({
-                            content: image_split[1],
+                            content: image_current,
                             ephemeral: true,
                             components: [
-                                image_split[0]
+                                {
+                                    "type": 1,
+                                    "components": [
+                                        {
+                                            "type": 2,
+                                            "label": (user_input).toLowerCase() + " Again?",
+                                            "style": 'SUCCESS',
+                                            "custom_id": (user_input).toLowerCase() + "_repeat"
+                                        },
+                                        {
+                                            "type": 2,
+                                            "label": (user_input).toLowerCase() + " Reveal?",
+                                            "style": 'SUCCESS',
+                                            "custom_id": "_reveal"
+                                        }
+                                    ]
+                                }
                             ]
                         })
                     }
         
                     if (interaction.customId === "_reveal"){
                         await interaction.reply({
-                            content: save_list[countI],
-                            ephemeral: false
-                        })
-                    }
-                    else {
-                        interaction.reply({
-                            "content" : save_list[0]
+                            "content": save_list[countI],
+                            "ephemeral": false
                         })
                     }
                 }
