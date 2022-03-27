@@ -1,0 +1,1 @@
+module.exports = ["https://tenor.com/view/gawr-gura-gawr-gura-gif-18439720"]
