@@ -1,3 +1,5 @@
+//Required info to run, don't edit
+var countI = 0
 const { count } = require('console');
 const {MessageActionRow} = require('discord.js');
 const {MessageButton} = require('discord.js');
@@ -6,10 +8,10 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 
+//This needs to be updated with every new version update
 var update_info = "https://cdn.discordapp.com/attachments/806288700736405506/957589966794420224/info_v1.1.1.png"
 version_Bot = "v1.1.1"
 update_log = "***UPDATE LOG***\n```Reimplemented Ping Pong... but better\nRepeating commands that had previously been hidden can now be shared in server by pressing the 'Reveal?' button...\n    This feature was soo much harder to figure out than I'd thought it'd be\nOn request, an 'NSFW' command has been added```"
-var countI = 0
 
 
 client.on('guildCreate', guild => { // Runs when joining a new server
@@ -92,20 +94,21 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
 
 client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
 
-//Bot replies that can't be iterated via 
+//Bot replies that can't be iterated via module_store
 bot_reply("info", ["Currently running " + version_Bot +  " of BlancoBot\n\n" + update_log + "\nhttps://cdn.discordapp.com/attachments/955121751094882336/955525144963596348/Thanks.png\n" + update_info]);
 bot_reply("help", [update_info]);
 
 
+//Setting up user interaction for modules within module_store
 user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee", "nsfw", "ping", "pong", "a"]
 module_dire = {catto : "cat", koko : "koala", foxy : "fox", ferret : "ferret", guwr : "gura", panda : "panda", lion : "lion", awoo : "wolf", bnuy : "rabbit", meemee : "fish", nsfw : "nsfw", ping : "pong", pong : "pong", a : "a"}
 
-require('events').EventEmitter.defaultMaxListeners = 20;
+require('events').EventEmitter.defaultMaxListeners = 20; // Current Event Listeners are below this, increased for better slack 
 for (var i = 0; i < user_msg.length; ++i) {
     bot_reply(user_msg[i], require('./module_store/' + module_dire[String(user_msg[i])] + '_module.js'))
-    }       
+    }       // sets up user_msg inputs for loading modules from module_store
 
 
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error);
-});
+}); //Allows code to carry on running when errors are abound, prints errors for review
