@@ -40,7 +40,7 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                     if (interaction.customId === (user_input).toLowerCase() + "_repeat") {
                         countI++
                         await interaction.reply({
-                            content: (image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
+                            content: String(image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
                             ephemeral: true,
                             components: [
                                 {
@@ -57,8 +57,10 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                                             "label": (user_input).toLowerCase() + " Reveal?",
                                             "style": 'SUCCESS',
                                             "custom_id": "_reveal"
-                                        }]}]})}
-                                        save_list.push(image_current)
+                                        }]}]})
+                                        save_list.push(String(image_current))
+                                    }
+                                        
         
                     if (interaction.customId === "_reveal"){
                         await interaction.reply({
@@ -72,7 +74,6 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
 });
 
 client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
-console.log(test = require('./module_store/fox_module.js')[1])
 
 //Setting up user interaction for modules within module_store directory
 user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee", "nsfw", "ping", "pong", "a", "info", "help"]
