@@ -22,7 +22,7 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
     client.on('messageCreate', async msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
             await msg.reply({
-                content: img_data,
+                content: String(image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
                 ephemeral: user_only_visible,
                 components: [
                     {
@@ -38,11 +38,9 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
                     if (interaction.customId === (user_input).toLowerCase() + "_repeat") {
-                        var image_current = String(bot_output[Math.floor(Math.random() * bot_output.length)])
-                        save_list.push(image_current)
                         countI++
                         await interaction.reply({
-                            content: image_current,
+                            content: (image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
                             ephemeral: true,
                             components: [
                                 {
@@ -60,6 +58,7 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                                             "style": 'SUCCESS',
                                             "custom_id": "_reveal"
                                         }]}]})}
+                                        save_list.push(image_current)
         
                     if (interaction.customId === "_reveal"){
                         await interaction.reply({
@@ -73,6 +72,7 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
 });
 
 client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
+console.log(test = require('./module_store/fox_module.js')[1])
 
 //Setting up user interaction for modules within module_store directory
 user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee", "nsfw", "ping", "pong", "a", "info", "help"]
@@ -80,10 +80,9 @@ module_dire = {catto : "cat", koko : "koala", foxy : "fox", ferret : "ferret", g
 
 require('events').EventEmitter.defaultMaxListeners = 20; // Current Event Listeners are below this, increased for better slack 
 for (var i = 0; i < user_msg.length; ++i) {
-    bot_reply(user_msg[i], require('./module_store/' + module_dire[String(user_msg[i])] + '_module.js'))
+    bot_reply(user_msg[i], module_dire[String(user_msg[i])])
     }       // sets up user_msg inputs for loading modules from module_store
-
-
+    
 process.on('unhandledRejection', error => {
 	console.error('Unhandled promise rejection:', error);
 }); //Allows code to carry on running when errors are abound, prints errors for review
