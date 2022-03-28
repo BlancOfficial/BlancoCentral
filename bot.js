@@ -21,7 +21,6 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
     {
     client.on('messageCreate', async msg => {
       if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
-            img_data = String(bot_output[Math.floor(Math.random() * bot_output.length)])
             await msg.reply({
                 content: img_data,
                 ephemeral: user_only_visible,
