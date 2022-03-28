@@ -15,6 +15,17 @@ client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`info`)
   });
   
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error);
+}); //Allows code to carry on running when errors are abound, prints errors for review
+
+client.on('ready', () => { //Checks whether bot is running at logs on startup
+    console.log(`Logged in as ${client.user.tag}!`);
+});
+
+client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
+
+
 
 
 async function bot_reply(user_input, bot_output, user_only_visible = false) // Function to handle bot replies
@@ -69,12 +80,6 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                         })}}})}})};
 
 
-client.on('ready', () => { //Checks whether bot is running at logs on startup
-    console.log(`Logged in as ${client.user.tag}!`);
-});
-
-client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
-
 //Setting up user interaction for modules within module_store directory
 user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee", "nsfw", "ping", "pong", "a", "info", "help"]
 module_dire = {catto : "cat", koko : "koala", foxy : "fox", ferret : "ferret", guwr : "gura", panda : "panda", lion : "lion", awoo : "wolf", bnuy : "rabbit", meemee : "fish", nsfw : "nsfw", ping : "pong", pong : "pong", a : "a", info : "info", help : "help"}
@@ -84,6 +89,3 @@ for (var i = 0; i < user_msg.length; ++i) {
     bot_reply(user_msg[i], module_dire[String(user_msg[i])])
     }       // sets up user_msg inputs for loading modules from module_store
     
-process.on('unhandledRejection', error => {
-	console.error('Unhandled promise rejection:', error);
-}); //Allows code to carry on running when errors are abound, prints errors for review
