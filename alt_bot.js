@@ -9,10 +9,22 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
 
 client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
 
+let exec = require('child_process').exec
+
 client.on('messageCreate', msg => {
     if ((msg.content).toLowerCase() === "restart") {
-        var wshShell = new ActiveXObject("WScript.Shell");
-        wshShell.Run(".\\run.bat"); 
+        exec("./run.bat", function (err, stdout, stderr) {
+            if (err) {
+                 console.log(stderr);
+                 return;
+            }
+            // Done.
+            console.log(stdout);
+        });
+
+        }
+    if ((msg.content).toLowerCase() === "status") {
+        msg.reply("Bot loader: Staus Online")
         }
     }
 )
