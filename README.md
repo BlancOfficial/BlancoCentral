@@ -14,4 +14,4 @@ _Discord.js_ Module has been uploaded, god bless github desktop not having a fil
 # To run the file ensure node.js is downloaded 
 (Link to download https://nodejs.org/en/download/releases/)
 
-Then run the batch file (_run.bat_)
+To run the program, run the _run.bat_ file and type 'restart' into discord
