@@ -18,8 +18,9 @@ client.on('messageCreate', msg => {
             msg.reply("Bot loader: Staus Online")
         }
     
-        if ((msg.content).toLowerCase() === "shutdown") {
+        if ((msg.content).toLowerCase() === "stop active process") {
             msg.reply("This feature has not been implemented yet")
+            msg.reply("restart")
         }
     }
 )
