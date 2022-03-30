@@ -16,6 +16,10 @@ client.on('messageCreate', msg => {
 
         if ((msg.content).toLowerCase() === "status") {
             msg.reply("Bot loader: Staus Online")
-            }
+        }
+    
+        if ((msg.content).toLowerCase() === "shutdown") {
+            msg.reply("This feature has not been implemented yet")
+        }
     }
 )
