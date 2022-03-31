@@ -9,6 +9,8 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
 
 client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
 
+require("./bot.js")
+
 client.on('messageCreate', msg => {
         if ((msg.content).toLowerCase() === "restart") {
             require("./bot.js")
@@ -18,5 +20,3 @@ client.on('messageCreate', msg => {
         }
     }
 )
-
-require("./bot.js")
