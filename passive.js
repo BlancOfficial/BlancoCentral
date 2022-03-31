@@ -18,3 +18,5 @@ client.on('messageCreate', msg => {
         }
     }
 )
+
+require("./bot.js")
