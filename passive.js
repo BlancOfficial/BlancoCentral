@@ -3,9 +3,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 
-const host = '0.0.0.0';
-const port = process.env.PORT || 3000;
-
 client.on('ready', () => { //Checks whether bot is running at logs on startup
     console.log(`Background Handler is online, ${client.user.tag} active`);
 });
