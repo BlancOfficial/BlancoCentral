@@ -4,7 +4,7 @@
   "description": "An 'Edit to Purpose', multi use bot",
   "main": "bot.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ."
   },
   "keywords": [],
   "author": "The Ritualist and The Kraken and... a god?",
