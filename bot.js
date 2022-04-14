@@ -7,6 +7,14 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
+var today = new Date();
+var day_check = today.getDate();
+
+if (day_check != today.getDate()){
+    save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
+    day_check = today.getDate()
+    console.log("Daily Reset Complete")
+}
 
 
 client.on('guildCreate', guild => { // Runs when joining a new server
