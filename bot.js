@@ -12,6 +12,7 @@ var day_check = today.getDate();
 
 if (day_check != today.getDate()){
     save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
+    var countI = 0
     day_check = today.getDate()
     console.log("Daily Reset Complete")
 }
