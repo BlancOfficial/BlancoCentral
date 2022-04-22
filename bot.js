@@ -1,21 +1,10 @@
 //Required info to run, don't edit
-var countI = 0
 const { count } = require('console');
 const {MessageActionRow} = require('discord.js');
 const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
-save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
-var today = new Date();
-var day_check = today.getDate();
-
-if (day_check != today.getDate()){
-    save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
-    var countI = 0
-    day_check = today.getDate()
-    console.log("Daily Reset Complete")
-}
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -57,7 +46,6 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
                     if (interaction.customId === (user_input).toLowerCase() + "_repeat") {
-                        countI++
                         await interaction.reply({
                             content: String(image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
                             ephemeral: true,
@@ -77,13 +65,14 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                                             "style": 'SUCCESS',
                                             "custom_id": "_reveal"
                                         }]}]})
+                                        save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png", String(image_current)]
                                         save_list.push(String(image_current))
                                     }
                                         
         
                     if (interaction.customId === "_reveal"){
                         await interaction.reply({
-                            "content": save_list[countI],
+                            "content": save_list[1],
                             "ephemeral": false
                         })}}})}})};
 
@@ -97,3 +86,8 @@ for (var i = 0; i < user_msg.length; ++i) {
     bot_reply(user_msg[i], module_dire[String(user_msg[i])])
     }       // sets up user_msg inputs for loading modules from module_store
     
+client.on('messageCreate', async msg => {
+    if ((msg.content).toLowerCase() === "status") {
+        msg.reply("Bot loader: Staus Online")
+    }
+})

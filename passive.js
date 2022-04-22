@@ -9,19 +9,7 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
 
 client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
 
-
-function bot_runtime(){
+x = null
+if (x === null){
     require("./bot.js")
 }
-
-
-bot_runtime()
-client.on('messageCreate', msg => {
-        if ((msg.content).toLowerCase() === "restart") {
-            bot_runtime()
-        }
-        if ((msg.content).toLowerCase() === "status") {
-            msg.reply("Bot loader: Staus Online")
-        }
-    }
-)
