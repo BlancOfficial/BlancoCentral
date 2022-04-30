@@ -1,6 +1,6 @@
 {
   "name": "BlancoBot",
-  "version": "^1.1.4",
+  "version": "^1.1.5",
   "description": "An 'Edit to Purpose', multi use bot",
   "main": "passive.js",
   "scripts": {
