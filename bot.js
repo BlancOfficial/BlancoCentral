@@ -28,9 +28,9 @@ client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Disco
 async function bot_reply(user_input, bot_output, user_only_visible = false) // Function to handle bot replies
     {
     client.on('messageCreate', async msg => {
-      if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
+      if ((msg.content).toLowerCase() === (user_input).toLowerCase() || (msg.content).toLowerCase() === (user_input).toLowerCase() + /^<@!?(\d+)>$/) {
             await msg.reply({
-                content: String(image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
+                content: String(String(msg.content.slice(length(user_input))) + image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
                 ephemeral: user_only_visible,
                 components: [
                     {
@@ -78,8 +78,8 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
 
 
 //Setting up user interaction for modules within module_store directory
-user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee", "nsfw", "ping", "pong", "a", "info", "help"]
-module_dire = {catto : "cat", koko : "koala", foxy : "fox", ferret : "ferret", guwr : "gura", panda : "panda", lion : "lion", awoo : "wolf", bnuy : "rabbit", meemee : "fish", nsfw : "nsfw", ping : "pong", pong : "pong", a : "a", info : "info", help : "help"}
+user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee", "nsfw", "ping", "pong", "a", "info", "help", "hug", "pat"]
+module_dire = {catto : "cat", koko : "koala", foxy : "fox", ferret : "ferret", guwr : "gura", panda : "panda", lion : "lion", awoo : "wolf", bnuy : "rabbit", meemee : "fish", nsfw : "nsfw", ping : "pong", pong : "pong", a : "a", info : "info", help : "help", hug : "hug", pat : "pat"}
 
 require('events').EventEmitter.defaultMaxListeners = 20; // Current Event Listeners are below this, increased for better slack 
 for (var i = 0; i < user_msg.length; ++i) {
