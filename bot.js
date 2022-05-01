@@ -28,7 +28,7 @@ client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Disco
 async function bot_reply(user_input, bot_output, user_only_visible = false) // Function to handle bot replies
     {
     client.on('messageCreate', async msg => {
-      if ((msg.content).toLowerCase() === (user_input).toLowerCase() || (msg.content).toLowerCase() === (user_input).toLowerCase() + /^<@!?(\d+)>$/) {
+      if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
             await msg.reply({
                 content: String(String(msg.content.slice(length(user_input))) + image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
                 ephemeral: user_only_visible,
