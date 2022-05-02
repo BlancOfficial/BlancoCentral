@@ -16,6 +16,7 @@
     "discord-buttons": "^4.0.0-deprecated",
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
+    "pm2": "^5.2.0",
     "systeminformation": "^5.11.9"
   },
   "devDependencies": {

@@ -6,6 +6,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 require('dotenv').config();
 
+
+process.on('unhandledRejection', error => {})
+
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
     guild.systemChannel.send("There is no set prefix, enter `info` to get started, Just like this : ")
