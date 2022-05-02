@@ -12,17 +12,11 @@ client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`info`)
   });
   
-process.on('unhandledRejection', error => {
-	console.error('Unhandled promise rejection:', error);
-}); //Allows code to carry on running when errors are abound, prints errors for review
-
 client.on('ready', () => { //Checks whether bot is running at logs on startup
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
-
-
 
 
 async function bot_reply(user_input, bot_output, user_only_visible = false) // Function to handle bot replies
