@@ -19,7 +19,11 @@ To run the program solo, open terminal within the _BLANCOBOT_ Folder and type no
 
 # BruhBot
 _BruhBot/BruhBot.js_ is the main running file, it is a compact peice of code
-To run the program solo, open terminal within the _BLANCOBOT_ Folder and type _node BlancoBot/BlancoBot.js_
+To run the program solo, open terminal within the _BLANCOBOT_ Folder and type _node BruhoBot/BruhBot.js_
+
+# RepeatoBot
+_RepeatoBot/RepeatoBot.js_ is the main running file, it is a compact peice of code
+To run the program solo, open terminal within the _BLANCOBOT_ Folder and type _node RepeatoBot/RepeatoBot.js_
 
 
 # Running Full
