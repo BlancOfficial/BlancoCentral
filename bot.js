@@ -76,7 +76,7 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
 
 
 //Setting up user interaction for modules within module_store directory
-user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee", "nsfw", "ping", "pong", "a", "info", "help", "hug", "pat", "foxy fart"]
+user_msg = ["catto", "koko", "foxy", "ferret", "guwr", "panda", "lion", "awoo", "bnuy", "meemee", "ping", "pong", "a", "info", "help", "hug", "pat", "foxy fart"]
 module_dire = {catto : "cat", koko : "koala", foxy : "fox", ferret : "ferret", guwr : "gura", panda : "panda", lion : "lion", awoo : "wolf", bnuy : "rabbit", meemee : "fish", nsfw : "nsfw", ping : "pong", pong : "pong", a : "a", info : "info", help : "help", hug : "hug", pat : "pat", "foxy fart" : "foxy fart"}
 
 require('events').EventEmitter.defaultMaxListeners = 30; // Current Event Listeners are below this, increased for better slack 

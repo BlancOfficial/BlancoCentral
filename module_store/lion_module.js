@@ -1,1 +1,15 @@
-module.exports = ["https://cdn.discordapp.com/attachments/940686820939800636/955281462616264734/7e03eee3e18ee0f0dc5425ae1fb03374.jpg", "https://cdn.discordapp.com/attachments/940686820939800636/955281462414946344/55bee099f3db682e7a39dcf4d786a51b.jpg", "https://cdn.discordapp.com/attachments/940686820939800636/955281462217809920/8db24bca03652f702a4614e01f696e00.jpg", "https://cdn.discordapp.com/attachments/940686820939800636/955281462008086588/383fdfe7a6af6310ca3492671cd1e1bf.jpg", "https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/09/05/10/cubs9.jpg?width=1200", "https://idsb.tmgrup.com.tr/ly/uploads/images/2021/11/04/156997.jpg", "https://static01.nyt.com/images/2019/07/21/arts/23lionking1/merlin_154880472_6647f53b-1be2-43cd-87e0-ce26ebf1d4ed-articleLarge.jpg?quality=75&auto=webp&disable=upscale", "https://i.natgeofe.com/k/7d2ff3ff-da0d-4356-b484-408e3589c344/cool-things-lions-9_3x4.jpg", "https://i.natgeofe.com/k/c7258205-66c7-477a-ad4a-55c7ce600044/cool-things-lions-1.jpg?w=636&h=424", "http://www.mepixels.com/cache/9b6656e2/cool-lion-1140x1140-pJTiFqZs9.jpeg", "https://www.itl.cat/pngfile/big/10-104870_lion-hd-desktop-wallpapers-lion-wallpaper-hd.jpg", "https://wallpapercave.com/wp/wp2034405.jpg", "https://media4.giphy.com/media/DvMHwFYLVHlZe/200.gif", "https://media1.giphy.com/media/Lp71UWmAAeJHi/giphy.gif", "https://bestanimations.com/media/lion-king/1330292882lion-king-animated-gif-14.gif"]
+module.exports = ["https://cdn.discordapp.com/attachments/940686820939800636/955281462616264734/7e03eee3e18ee0f0dc5425ae1fb03374.jpg", 
+"https://cdn.discordapp.com/attachments/940686820939800636/955281462414946344/55bee099f3db682e7a39dcf4d786a51b.jpg", 
+"https://cdn.discordapp.com/attachments/940686820939800636/955281462217809920/8db24bca03652f702a4614e01f696e00.jpg", 
+"https://cdn.discordapp.com/attachments/940686820939800636/955281462008086588/383fdfe7a6af6310ca3492671cd1e1bf.jpg", 
+"https://static.independent.co.uk/s3fs-public/thumbnails/image/2016/09/05/10/cubs9.jpg?width=1200", 
+"https://idsb.tmgrup.com.tr/ly/uploads/images/2021/11/04/156997.jpg", 
+"https://static01.nyt.com/images/2019/07/21/arts/23lionking1/merlin_154880472_6647f53b-1be2-43cd-87e0-ce26ebf1d4ed-articleLarge.jpg?quality=75&auto=webp&disable=upscale", 
+"https://i.natgeofe.com/k/7d2ff3ff-da0d-4356-b484-408e3589c344/cool-things-lions-9_3x4.jpg", 
+"https://i.natgeofe.com/k/c7258205-66c7-477a-ad4a-55c7ce600044/cool-things-lions-1.jpg?w=636&h=424", 
+"http://www.mepixels.com/cache/9b6656e2/cool-lion-1140x1140-pJTiFqZs9.jpeg", 
+"https://www.itl.cat/pngfile/big/10-104870_lion-hd-desktop-wallpapers-lion-wallpaper-hd.jpg", 
+"https://wallpapercave.com/wp/wp2034405.jpg", 
+"https://media4.giphy.com/media/DvMHwFYLVHlZe/200.gif", 
+"https://media1.giphy.com/media/Lp71UWmAAeJHi/giphy.gif", 
+"https://bestanimations.com/media/lion-king/1330292882lion-king-animated-gif-14.gif"]

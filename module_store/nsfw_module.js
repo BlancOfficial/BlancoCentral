@@ -1,1 +1,0 @@
-module.exports = ["https://i.redd.it/9tgk6up2ltb11.jpg", "https://i.redd.it/q4tr5g7o9ky61.png"]
