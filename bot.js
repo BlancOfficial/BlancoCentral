@@ -38,7 +38,11 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                                 "label": (user_input).toLowerCase() + " Again?",
                                 "style": 'SUCCESS',
                                 "custom_id": (user_input).toLowerCase() + "_repeat"
-                            }]}]})
+                            }
+                        ]
+                    }
+                ]
+            })
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
@@ -61,7 +65,11 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                                             "label": (user_input).toLowerCase() + " Reveal?",
                                             "style": 'SUCCESS',
                                             "custom_id": "_reveal"
-                                        }]}]})
+                                        }
+                                    ]
+                                }
+                            ]
+                        })
                                         save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png", String(image_current)]
                                         save_list.push(String(image_current))
                                     }
@@ -71,7 +79,13 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                         await interaction.reply({
                             "content": save_list[1],
                             "ephemeral": false
-                        })}}})}}})}
+                        })
+                    }
+                }
+            })
+        }
+    }
+})}
 
 
 //Setting up user interaction for modules within module_store directory
