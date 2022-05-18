@@ -4,7 +4,6 @@ const {MessageActionRow} = require('discord.js');
 const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
-require('dotenv').config();
 
 
 process.on('unhandledRejection', error => {})
@@ -19,7 +18,7 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
     console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.login(process.env.DISCORD_TOKEN); //Bot accesses discord using Auth Discord Token
+client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //Bot accesses discord using Auth Discord Token
 
 
 async function bot_reply(user_input, bot_output, user_only_visible = false) // Function to handle bot replies
