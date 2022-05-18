@@ -26,4 +26,5 @@ module.exports = ["https://cdn.discordapp.com/attachments/940686820939800636/955
 "https://animals.sandiegozoo.org/sites/default/files/2016-09/animals_hero_redpanda.jpg", 
 "https://www.newquayzoo.org.uk/wp-content/uploads/2021/05/NZ-red-panda-1024x576.jpg", 
 "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/01/28/07/istock-588354646web.jpg?width=1200", 
-"https://tenor.com/view/when-i-see-a-bug-oops-uh-oh-tip-toe-get-off-me-gif-14557784"]
+"https://tenor.com/view/when-i-see-a-bug-oops-uh-oh-tip-toe-get-off-me-gif-14557784",
+"https://imgur.com/8jXqIFz"]
