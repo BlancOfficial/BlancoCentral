@@ -25,5 +25,4 @@ module.exports = ["https://media.discordapp.net/attachments/890039940782645282/9
 "https://marvel-b1-cdn.bc0a.com/f00000000052994/www.hillspet.com/content/dam/cp-sites/hills/hills-pet/en_us/exported/cat-care/new-pet-parent/images/siamese-kitten.jpg", 
 "https://media.istockphoto.com/photos/closeup-photo-of-cat-nose-cute-domestic-cat-picture-id1225977398?k=20&m=1225977398&s=612x612&w=0&h=QxlAmhM0QqRBU-d2C2id9Yv0m8F6EZ3Bsu8DPLUVYpg=", 
 "https://cdn.discordapp.com/attachments/957283103729135668/957291827625607249/IMG_7023.png", 
-"https://cdn.discordapp.com/attachments/957283103729135668/957291828296679464/Untitled142_20220326215417.png", 
-"https://cdn.discordapp.com/attachments/957283103729135668/957291827894034513/IMG_7022.png"]
+"https://cdn.discordapp.com/attachments/957283103729135668/957291828296679464/Untitled142_20220326215417.png"]
