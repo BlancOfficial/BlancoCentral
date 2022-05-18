@@ -4,11 +4,11 @@
 
 # BlancoBot
 _bot.js_ is the main running file, the two _.json_ files give an overview on dependencies and requirements. 
-The _.env_ Discord Token has been uploaded, here is to trusting that others won't missue it.
+The Discord Token has been uploaded to the code, here is to trusting that others won't missue it.
 
 All the _module.js_ Files withint the _module_store_ folder are storage banks for bot links
 
-Make sure not to add image links of more than 100 characters long
+Make sure not to add image links of more than 100 characters long within the otuput content of messages
 
 _info-module.js_ and _help-module.js_ needs to be updated every time a new version is released
 
