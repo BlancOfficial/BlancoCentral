@@ -33,4 +33,15 @@ module.exports = ["https://tenor.com/view/head-pat-anime-girl-tohka-gif-24658945
 "https://tenor.com/view/%D1%82%D1%8F%D0%BD%D0%BA%D0%B0-cat-gif-21106786", 
 "https://tenor.com/view/tooru-yukimura-aoharu-x-machinegun-glasses-pat-head-gif-17478008", 
 "https://tenor.com/view/chihya-puchimas-patshead-anime-chibi-gif-5518317", 
-"https://tenor.com/view/cuticle-tantei-inaba-head-pet-pat-petting-anime-gif-17078946"]
+"https://tenor.com/view/cuticle-tantei-inaba-head-pet-pat-petting-anime-gif-17078946",
+"https://64.media.tumblr.com/a72dd82535f3e7accd827c202dacc09a/tumblr_pfyiqz0pFL1th206io1_640.gifv",
+"https://i.pinimg.com/originals/70/96/0e/70960e87fb9454df6a1d15c96c9ad955.gif",
+"https://thumbs.gfycat.com/BlushingDeepBlacknorwegianelkhound-size_restricted.gif",
+"https://i.pinimg.com/originals/d7/c3/26/d7c326bd43776f1e0df6f63956230eb4.gif",
+"https://giffiles.alphacoders.com/932/93206.gif",
+"https://64.media.tumblr.com/acab0232bfb5cfd5d2d45e55e9dae898/tumblr_pbxhq7GyIf1th206io1_500.gifv",
+"https://i.pinimg.com/originals/ec/b8/7f/ecb87fb2827a022884d5165046f6608a.gif",
+"https://data.whicdn.com/images/297125626/original.gif",
+"https://animesher.com/orig/1/136/1363/13633/animesher.com_gif-suki-pat-1363315.gif",
+"https://animesher.com/orig/0/64/648/6482/animesher.com_akame-ga-kill-head-pat-gif-648259.gif",
+"https://i.imgur.com/TPqMPka.gif"]

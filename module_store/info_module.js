@@ -1,6 +1,6 @@
 const thank = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png"
 const update_info = "https://cdn.discordapp.com/attachments/806288700736405506/973314199377825832/info_v1.1.5.1.png"
 const version_Bot = "v1.1.5"
-const update_log = "***UPDATE LOG***\n```Added Hug and Pat as commands, planning to make it ping-able but not implemented yet```"
+const update_log = "***UPDATE LOG***\n`Updated the modules, added more images, enjoy ^^`"
 
 module.exports = ["Currently running " + version_Bot +  " of BlancoBot\n\n" + update_log + "\n" + thank + "\n" + update_info]
