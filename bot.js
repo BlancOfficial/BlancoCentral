@@ -1,14 +1,11 @@
 //Required info to run, don't edit
-const { count } = require('console');
-const {MessageActionRow} = require('discord.js');
-const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require('fs')
 
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 
-process.on('unhandledRejection', error => {console.log(error)})
+process.on('unhandledRejection', error => {})
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
