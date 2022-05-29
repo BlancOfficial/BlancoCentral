@@ -1,5 +1,5 @@
 const thank = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png"
-const update_info = "https://cdn.discordapp.com/attachments/806288700736405506/973314199377825832/info_v1.1.5.1.png"
+const update_info = require("./help_module")
 const version_Bot = "v1.1.5"
 const update_log = "***UPDATE LOG***\n`Updated the modules, added more images, enjoy ^^`"
 
