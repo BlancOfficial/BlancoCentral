@@ -5,8 +5,11 @@ const {MessageButton} = require('discord.js');
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
+save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 
-process.on('unhandledRejection', error => {})
+process.on('unhandledRejection', error => {
+    console.log(error)
+})
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -27,7 +30,7 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
       if (msg.member.id !== "955119550058348585"){
         if ((msg.content).toLowerCase() === (user_input).toLowerCase()) {
             await msg.reply({
-                content: String(image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
+                content: String(save_list[0] = String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])),
                 ephemeral: user_only_visible,
                 components: [
                     {
@@ -48,7 +51,7 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                 if (interaction.isButton()) {
                     if (interaction.customId === (user_input).toLowerCase() + "_repeat") {
                         await interaction.reply({
-                            content: String(image_current = [String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])]),
+                            content: String(save_list[0] = String(require('./module_store/' + bot_output + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + bot_output + '_module.js').length))])),
                             ephemeral: true,
                             components: [
                                 {
@@ -70,15 +73,13 @@ async function bot_reply(user_input, bot_output, user_only_visible = false) // F
                                 }
                             ]
                         })
-                                        save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png", String(image_current)]
-                                        save_list.push(String(image_current))
-                                    }
+                    }
                                         
         
-                    if (interaction.customId === "_reveal"){
+                    if (interaction.customId === "_reveal") {
                         await interaction.reply({
-                            "content": save_list[1],
-                            "ephemeral": false
+                            content: String(save_list[0]),
+                            ephemeral: false
                         })
                     }
                 }
