@@ -22,7 +22,7 @@ client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //B
 
 require('events').EventEmitter.defaultMaxListeners = 30; // Current Event Listeners are below this, increased for better slack 
 
-fs.readdirSync("./str_module_store/").forEach(file => {
+fs.readdirSync("./BlancoBot/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
             await msg.reply({
@@ -31,7 +31,7 @@ fs.readdirSync("./str_module_store/").forEach(file => {
     }
 })})
 
-fs.readdirSync("./module_store/").forEach(file => {
+fs.readdirSync("./BlancoBot/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
         if (msg.member.id !== "955119550058348585"){
           if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
