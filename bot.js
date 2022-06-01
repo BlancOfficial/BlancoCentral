@@ -19,7 +19,6 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
 
 client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //Bot accesses discord using Auth Discord Token
 
-
 require('events').EventEmitter.defaultMaxListeners = 30; // Current Event Listeners are below this, increased for better slack 
 
 fs.readdirSync("./module_store/").forEach(file => {
@@ -71,8 +70,7 @@ fs.readdirSync("./module_store/").forEach(file => {
                               ]
                           })
                       }
-                                          
-          
+
                       if (interaction.customId === "_reveal") {
                           await interaction.reply({
                               content: String(save_list[0]),
