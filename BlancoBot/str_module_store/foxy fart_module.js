@@ -1,1 +1,1 @@
-module.exports = [":fox: :dash:"]
+module.exports = (":fox: :dash:")
