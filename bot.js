@@ -2,6 +2,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require('fs')
+const { MessageEmbed } = require('discord.js');
 
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 
@@ -21,13 +22,28 @@ client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //B
 
 require('events').EventEmitter.defaultMaxListeners = 30; // Current Event Listeners are below this, increased for better slack 
 
+fs.readdirSync("./str_module_store/").forEach(file => {
+    client.on('messageCreate', async msg => {
+        if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
+            await msg.reply({
+                content: require('./str_module_store/' + file.slice(0, - 10) + '_module.js')
+            })
+    }
+})})
+
 fs.readdirSync("./module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if (msg.member.id !== "955119550058348585"){
           if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
               await msg.reply({
-                  content: String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])),
-                  ephemeral: false,
+                embeds: [
+                    new MessageEmbed()
+                        .setColor("#0099ff")
+                        .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
+                        .setImage(String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])))
+                        .setTimestamp()
+                ],
+                ephemeral: false,
                   components: [
                       {
                           "type": 1,
@@ -47,7 +63,13 @@ fs.readdirSync("./module_store/").forEach(file => {
                   if (interaction.isButton()) {
                       if (interaction.customId === (file.slice(0, - 10)).toLowerCase() + "_repeat") {
                           await interaction.reply({
-                              content: String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])),
+                            embeds: [
+                                new MessageEmbed()
+                                    .setColor("#0099ff")
+                                    .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
+                                    .setImage(String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])))
+                                    .setTimestamp()
+                            ],
                               ephemeral: true,
                               components: [
                                   {
@@ -73,7 +95,13 @@ fs.readdirSync("./module_store/").forEach(file => {
 
                       if (interaction.customId === "_reveal") {
                           await interaction.reply({
-                              content: String(save_list[0]),
+                              embeds: [
+                                new MessageEmbed()
+                                    .setColor("#0099ff")
+                                    .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
+                                    .setImage(String(save_list[0]))
+                                    .setTimestamp()
+                            ],
                               ephemeral: false
                           })
                       }
