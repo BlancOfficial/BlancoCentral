@@ -26,7 +26,7 @@ fs.readdirSync("./BlancoBot/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
             await msg.reply({
-                content: require('./str_module_store/' + file.slice(0, - 10) + '_module.js')
+                content: String(require('./str_module_store/' + file.slice(0, - 10) + '_module.js'))
             })
     }
 })})
