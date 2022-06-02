@@ -27,7 +27,7 @@ module.exports = ["https://cdn.discordapp.com/attachments/940686820939800636/955
 "https://www.newquayzoo.org.uk/wp-content/uploads/2021/05/NZ-red-panda-1024x576.jpg", 
 "https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/01/28/07/istock-588354646web.jpg?width=1200", 
 "https://c.tenor.com/Zpqf6XyCCYoAAAAd/when-i-see-a-bug-oops.gif",
-"https://imgur.com/8jXqIFz",
+"https://i.imgur.com/8jXqIFz.mp4",
 "https://images.unsplash.com/photo-1542880941-1abfea46bba6",
 "https://images.unsplash.com/photo-1597365657409-3295ffce315c",
 "https://images.unsplash.com/photo-1538099130811-745e64318258",
