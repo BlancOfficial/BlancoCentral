@@ -22,8 +22,12 @@ client.on('ready', () => { //Checks whether bot is running at logs on startup
 
 client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //Bot accesses discord using Auth Discord Token
 
-require('events').EventEmitter.defaultMaxListeners = 30; // Current Event Listeners are below this, increased for better slack 
-
+require('events').EventEmitter.defaultMaxListeners = 50; // Current Event Listeners are below this, increased for better slack 
+client.on('messageCreate', async msg => {
+    if ((msg.content).toLowerCase() === "clr") {
+        save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
+    }
+})
 fs.readdirSync("./BlancoBot/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
