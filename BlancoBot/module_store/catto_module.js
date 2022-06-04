@@ -1,7 +1,6 @@
 module.exports = ["https://media.discordapp.net/attachments/890039940782645282/957684221315518536/received_5024771910936661.jpeg", 
 "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png", 
 "https://i.natgeofe.com/n/3861de2a-04e6-45fd-aec8-02e7809f9d4e/02-cat-training-NationalGeographic_1484324_3x4.jpg", 
-"https://cdn.discordapp.com/attachments/934232511112945664/955243795002318848/IMG_3109.jpg",  
 "https://c.tenor.com/uaEnYQb4Iy8AAAAC/neko-nekohime.gif", 
 "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg", 
 "https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip", 

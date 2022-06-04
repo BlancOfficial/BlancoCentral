@@ -56,7 +56,6 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
                     embeds: [
                         new MessageEmbed()
                             .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
-                            .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
                             .setImage(String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])))
                     ],
                     ephemeral: false,
@@ -89,7 +88,6 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
                             embeds: [
                                 new MessageEmbed()
                                     .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
-                                    .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
                                     .setImage(String(save_list[0]))
                                 ],
                             ephemeral: false,
@@ -114,7 +112,6 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
                             embeds: [
                                 new MessageEmbed()
                                     .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
-                                    .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
                                     .setImage(String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])))
                             ],
                             ephemeral: true,
