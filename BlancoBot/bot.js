@@ -6,7 +6,7 @@ const { MessageEmbed } = require('discord.js');
 
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 
-process.on('unhandledRejection', error => {})
+process.on('unhandledRejection', error => {console.log(error)})
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -38,6 +38,16 @@ fs.readdirSync("./BlancoBot/str_module_store/").forEach(file => {
         })
     })
 
+fs.readdirSync("./BlancoBot/embed_module_store/").forEach(file => {
+    client.on('messageCreate', async msg => {
+        if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
+            await msg.reply({
+                embeds: [require('./embed_module_store/' + file.slice(0, - 10) + '_module.js')]
+                })
+            }
+        })
+    })
+
 fs.readdirSync("./BlancoBot/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
         if (msg.member.id !== "955119550058348585"){
@@ -45,7 +55,7 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
                 await msg.reply({
                     embeds: [
                         new MessageEmbed()
-                            .setColor("#0099ff")
+                            .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
                             .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
                             .setImage(String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])))
                             .setTimestamp()
@@ -79,7 +89,7 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
                         await interaction.reply({
                             embeds: [
                                 new MessageEmbed()
-                                    .setColor("#0099ff")
+                                    .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
                                     .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
                                     .setImage(String(save_list[0]))
                                     .setTimestamp()
@@ -105,7 +115,7 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
                         await interaction.reply({
                             embeds: [
                                 new MessageEmbed()
-                                    .setColor("#0099ff")
+                                    .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
                                     .setTitle(msg.member.displayName + ' said ' + file.slice(0, - 10))
                                     .setImage(String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])))
                                     .setTimestamp()

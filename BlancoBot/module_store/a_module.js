@@ -1,1 +1,0 @@
-module.exports = ["https://c.tenor.com/ITCxOG7Jd_EAAAAC/gawr-gura-gawr.gif"]
