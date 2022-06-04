@@ -6,7 +6,6 @@ module.exports = {
         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
         description : ("Currently running " + version_Bot ),
         image : {url : thank},
-        timestamp : new Date(),
         fields: [
             { name: '***UPDATE LOG***', value: update_log }
         ],
