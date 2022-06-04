@@ -26,8 +26,6 @@ module.exports = {
             { name: 'pat', value: 'Pats You', inline: true },
             { name: 'ping', value: 'Pongs Back', inline: true },
             { name: 'pong', value: 'Pings Back', inline: true },
-            { name: 'foxy fart', value: '🦊💨', inline: true },
-            { name: 'help', value: 'View All Commands'},
             { name: 'info', value: 'Info Menu'},
         ]
     }
