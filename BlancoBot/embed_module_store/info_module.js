@@ -27,5 +27,6 @@ module.exports = {
             { name: 'ping', value: 'Pongs Back', inline: true },
             { name: 'pong', value: 'Pings Back', inline: true },
             { name: 'info', value: 'Info Menu'},
+            { name: 'Profile (Pingable)', value: 'View Profile'},
         ]
     }
