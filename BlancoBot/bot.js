@@ -44,9 +44,37 @@ fs.readdirSync("./BlancoBot/embed_module_store/").forEach(file => {
         })
     })
 
+
+client.on('messageCreate', async msg => {
+    if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
+        if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined){
+            await msg.reply({
+                embeds: [{
+                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                    title: (msg.member.user.tag),
+                    description : ("Current Server Nickname : " + msg.member.displayName),
+                    image : {url : ("https://cdn.discordapp.com/avatars/" + msg.member.user.id + "/" + msg.member.user.avatar + ".png")}
+                    }
+                ]
+            })
+        }
+        
+        else {
+            await msg.reply({
+                embeds: [{
+                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                    title: (JSON.parse((JSON.stringify(msg.mentions.users)))[0].tag),
+                    description : ("Current Server Nickname : " + JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName),
+                    image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png")}
+                    }
+                ]
+            })
+        }
+    }
+})
+
 fs.readdirSync("./BlancoBot/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (msg.member.id !== "955119550058348585"){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [
@@ -111,5 +139,5 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
                 })
             }
         }
-    })
+    )
 })
