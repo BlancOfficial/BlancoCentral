@@ -9,8 +9,9 @@ process.on('unhandledRejection', error => {})
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
-    guild.systemChannel.send("There is no set prefix, enter `info` to get started, Just like this : ")
+    guild.systemChannel.send("There is no prefix, enter `info` to get started, Just like this : ")
     guild.systemChannel.send(`info`)
+    guild.systemChannel.send(`*pout* Seems my creator hasn't activated my just yet, DM him at 𝓑𝓵𝓪𝓷𝓬𝓓𝓮𝓞𝓯𝓯𝓲𝓬𝓲𝓪𝓵#2485`)
     }
 )
   
@@ -23,9 +24,25 @@ client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //B
 
 require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 
+
+client.on('messageCreate', async msg => {
+    if (require("./admin_module/white_list.json").users.includes(String(msg.author.id)) ===  true){
+        if ((msg.content).toLowerCase() === ("admin.setup")) {
+            if (require("./admin_module/white_list.json").channels.includes(msg.channelId) === false){
+                data = require("./admin_module/white_list.json")
+                data.channels.push(msg.channelId)
+                fs.writeFile("BlancoBot/admin_module/white_list.json", JSON.stringify(data), err => {})
+                await msg.reply({
+                    embeds: [require("./admin_module/channel_ac")]
+                })
+            }
+        }
+    }
+})
+
 fs.readdirSync("./BlancoBot/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (require("./white_list").includes(String(msg.channelId))){
+        if (require("./admin_module/white_list").includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     content: String(require('./str_module_store/' + file.slice(0, - 10) + '_module.js'))
@@ -37,7 +54,7 @@ fs.readdirSync("./BlancoBot/str_module_store/").forEach(file => {
 
 fs.readdirSync("./BlancoBot/embed_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (require("./white_list").includes(String(msg.channelId))){
+        if (require("./admin_module/white_list").includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [require('./embed_module_store/' + file.slice(0, - 10) + '_module.js')]
@@ -47,9 +64,8 @@ fs.readdirSync("./BlancoBot/embed_module_store/").forEach(file => {
         })
     })
 
-
 client.on('messageCreate', async msg => {
-    if (require("./white_list").includes(String(msg.channelId))){
+    if (require("./admin_module/white_list").includes(String(msg.channelId))){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
             if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined){
                 await msg.reply({
@@ -80,7 +96,7 @@ client.on('messageCreate', async msg => {
 
 fs.readdirSync("./BlancoBot/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (require("./white_list").includes(String(msg.channelId))){
+        if (require("./admin_module/white_list").includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [
@@ -112,7 +128,7 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
-                    if (require("./white_list").includes(String(interaction.channelId))){
+                    if (require("./admin_module/white_list").includes(String(interaction.channelId))){
                         if (interaction.customId === (file.slice(0, - 10)).toLowerCase() + "_repeat") {
                             await interaction.reply({
                                 embeds: [

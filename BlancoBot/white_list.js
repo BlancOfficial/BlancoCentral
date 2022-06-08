@@ -1,2 +1,0 @@
-module.exports = ["971130499638636634", "979100024464113664", "955251411300536442", "890039940782645282", "929502495070359572"]
-                //Channel Main Server     Test Main Server      Foxy Server         General Krillin        Movie Krillin
