@@ -14,7 +14,7 @@ _info-module.js_ and _help-module.js_ needs to be updated every time a new versi
 
 _Discord.js_ Module has been uploaded, god bless github desktop not having a file upload limit
 
-To run the program solo, open terminal within the _BLANCOBOT_ Folder and type node bot.js
+To run the program solo, open terminal within the _BLANCOBOT_ Folder and type _node BruhBot/BlancoBot.js_
 
 
 # BruhBot

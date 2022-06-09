@@ -4,8 +4,10 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require('fs')
 const { MessageEmbed } = require('discord.js');
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
+whitelist = ["Test"]
+whitelist[0] = require("./modules/admin_module/white_list.json")
 
-process.on('unhandledRejection', error => {})
+process.on('unhandledRejection', error => {console.log(error)})
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -24,40 +26,51 @@ client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //B
 
 require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 
+client.on('messageCreate', async msg => {
+    whitelist[0] = require("./modules/admin_module/white_list.json")
+})
+
 
 client.on('messageCreate', async msg => {
-    if (require("./admin_module/white_list.json").users.includes(String(msg.author.id)) ===  true){
+    if (whitelist[0].users.includes(String(msg.author.id)) ===  true){
         if ((msg.content).toLowerCase() === ("admin.setup")) {
-            if (require("./admin_module/white_list.json").channels.includes(msg.channelId) === false){
-                data = require("./admin_module/white_list.json")
+            if (whitelist[0].channels.includes(msg.channelId) === false){
+                data = whitelist[0]
                 data.channels.push(msg.channelId)
-                fs.writeFile("BlancoBot/admin_module/white_list.json", JSON.stringify(data), err => {})
+                fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(data), err => {})
                 await msg.reply({
-                    embeds: [require("./admin_module/channel_ac")]
+                    embeds: [require("./modules/admin_module/channel_ac")]
                 })
             }
         }
     }
+    else {
+        await msg.reply({
+            embeds:[
+                {title: "You Don't look like an authorised user :0"}
+            ]
+        })
+    }
 })
 
-fs.readdirSync("./BlancoBot/str_module_store/").forEach(file => {
+fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (require("./admin_module/white_list").includes(String(msg.channelId))){
+        if (whitelist[0].channels.includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
-                    content: String(require('./str_module_store/' + file.slice(0, - 10) + '_module.js'))
+                    content: String(require('./modules/str_module_store/' + file.slice(0, - 10) + '_module.js'))
                     })
                 }
             }
         })
     })
 
-fs.readdirSync("./BlancoBot/embed_module_store/").forEach(file => {
+fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (require("./admin_module/white_list").includes(String(msg.channelId))){
+        if (whitelist[0].channels.includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
-                    embeds: [require('./embed_module_store/' + file.slice(0, - 10) + '_module.js')]
+                    embeds: [require('./modules/embed_module_store/' + file.slice(0, - 10) + '_module.js')]
                     })
                 }
             }
@@ -65,14 +78,14 @@ fs.readdirSync("./BlancoBot/embed_module_store/").forEach(file => {
     })
 
 client.on('messageCreate', async msg => {
-    if (require("./admin_module/white_list").includes(String(msg.channelId))){
+    if (whitelist[0].channels.includes(String(msg.channelId))){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
             if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined){
                 await msg.reply({
                     embeds: [{
                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                         title: (msg.member.user.tag),
-                        description : ("Current Server Nickname : " + msg.member.displayName),
+                        description : ("Current Server Nickname! : " + msg.member.displayName),
                         image : {url : ("https://cdn.discordapp.com/avatars/" + msg.member.user.id + "/" + msg.member.user.avatar + ".png")}
                         }
                     ]
@@ -94,15 +107,15 @@ client.on('messageCreate', async msg => {
     }
 })
 
-fs.readdirSync("./BlancoBot/module_store").forEach(file => {
+fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (require("./admin_module/white_list").includes(String(msg.channelId))){
+        if (whitelist[0].channels.includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [
                         new MessageEmbed()
                             .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
-                            .setImage(String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])))
+                            .setImage(String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))
                     ],
                     ephemeral: false,
                     components: [
@@ -128,13 +141,13 @@ fs.readdirSync("./BlancoBot/module_store").forEach(file => {
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
-                    if (require("./admin_module/white_list").includes(String(interaction.channelId))){
+                    if (whitelist[0].channels.includes(String(interaction.channelId))){
                         if (interaction.customId === (file.slice(0, - 10)).toLowerCase() + "_repeat") {
                             await interaction.reply({
                                 embeds: [
                                     new MessageEmbed()
                                         .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
-                                        .setImage(String(save_list[0] = String(require('./module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./module_store/' + file.slice(0, - 10) + '_module.js').length))])))
+                                        .setImage(String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))
                                 ],
                                 ephemeral: true,
                                 components: [
