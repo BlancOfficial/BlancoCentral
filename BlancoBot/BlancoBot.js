@@ -47,7 +47,11 @@ client.on('messageCreate', async msg => {
     else {
         await msg.reply({
             embeds:[
-                {title: "You Don't look like an authorised user :0"}
+                {
+                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                    title: "Contact A verified user to Activate this channel",
+                    image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
+                }
             ]
         })
     }
@@ -94,11 +98,12 @@ client.on('messageCreate', async msg => {
             
             else {
                 await msg.reply({
-                    embeds: [{
-                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                        title: (JSON.parse((JSON.stringify(msg.mentions.users)))[0].tag),
-                        description : ("Current Server Nickname : " + JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName),
-                        image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png")}
+                    embeds: [
+                        {
+                            color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                            title: (JSON.parse((JSON.stringify(msg.mentions.users)))[0].tag),
+                            description : ("Current Server Nickname : " + JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName),
+                            image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png")}
                         }
                     ]
                 })
