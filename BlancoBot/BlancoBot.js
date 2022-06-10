@@ -32,8 +32,8 @@ client.on('messageCreate', async msg => {
 
 
 client.on('messageCreate', async msg => {
-    if (whitelist[0].users.includes(String(msg.author.id)) ===  true){
-        if ((msg.content).toLowerCase() === ("admin.setup")) {
+    if ((msg.content).toLowerCase() === "admin.setup"){
+        if (whitelist[0].users.includes(String(msg.author.id)) ===  true) {
             if (whitelist[0].channels.includes(msg.channelId) === false){
                 data = whitelist[0]
                 data.channels.push(msg.channelId)
@@ -42,18 +42,29 @@ client.on('messageCreate', async msg => {
                     embeds: [require("./modules/admin_module/channel_ac")]
                 })
             }
+            else {
+                await msg.reply({
+                    embeds : [
+                        {
+                            color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                            title: "This Channel has already been Activated",
+                            image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
+                        }
+                    ]
+                })
+            }
         }
-    }
-    else {
-        await msg.reply({
-            embeds:[
-                {
-                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                    title: "Contact A verified user to Activate this channel",
-                    image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
-                }
-            ]
-        })
+        else {
+            await msg.reply({
+                embeds : [
+                    {
+                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                        title: "Contact A verified user to Activate this channel",
+                        image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
+                    }
+                ]
+            })
+        }
     }
 })
 
