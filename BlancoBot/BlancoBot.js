@@ -47,7 +47,7 @@ client.on('messageCreate', async msg => {
                     embeds : [
                         {
                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                            title: "This Channel has already been Activated",
+                            title: "This Channel Has Already Been Activated",
                             image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
                         }
                     ]
@@ -59,7 +59,7 @@ client.on('messageCreate', async msg => {
                 embeds : [
                     {
                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                        title: "Contact A verified user to Activate this channel",
+                        title: "Contact A Verified User To Activate This Channel",
                         image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
                     }
                 ]
