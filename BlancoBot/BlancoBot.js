@@ -2,7 +2,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require('fs')
-const { MessageEmbed } = require('discord.js');
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 whitelist = [require("./modules/admin_module/white_list.json")]
 
@@ -123,25 +122,26 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [
-                        new MessageEmbed()
-                            .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
-                            .setImage(String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))
+                        {
+                            color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                            image : {url : (String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))}
+                        }
                     ],
                     components: [
                         {
-                            "type": 1,
-                            "components": [
+                            type: 1,
+                            components: [
                                 {
-                                    "type": 2,
-                                    "label": (file.slice(0, - 10)).toLowerCase() + " Again?",
-                                    "style": 'SUCCESS',
-                                    "custom_id": (file.slice(0, - 10)).toLowerCase() + "_repeat"
+                                    type: 2,
+                                    label: (file.slice(0, - 10)).toLowerCase() + " Again?",
+                                    style: 'SUCCESS',
+                                    custom_id: (file.slice(0, - 10)).toLowerCase() + "_repeat"
                                 },
                                 {
-                                    "type": 2,
-                                    "label": "View Original",
-                                    "style": "LINK",
-                                    "url": save_list[0]
+                                    type: 2,
+                                    label: "View Original",
+                                    style: "LINK",
+                                    url: save_list[0]
                                 }
                             ]
                         }
@@ -154,30 +154,31 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                         if (interaction.customId === (file.slice(0, - 10)).toLowerCase() + "_repeat") {
                             await interaction.reply({
                                 embeds: [
-                                    new MessageEmbed()
-                                        .setColor(String("#" + Math.floor(Math.random()*16777215).toString(16)))
-                                        .setImage(String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))
+                                    {
+                                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                                        image : {url : (String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))}
+                                    }
                                 ],
                                 ephemeral: true,
                                 components: [
                                     {
-                                        "type": 1,
-                                        "components": [
+                                        type: 1,
+                                        components: [
                                             {
-                                                "type": 2,
-                                                "label": (file.slice(0, - 10)).toLowerCase() + " Again?",
-                                                "style": 'SUCCESS',
-                                                "custom_id": (file.slice(0, - 10)).toLowerCase() + "_repeat"
+                                                type: 2,
+                                                label: (file.slice(0, - 10)).toLowerCase() + " Again?",
+                                                style: 'SUCCESS',
+                                                custom_id: (file.slice(0, - 10)).toLowerCase() + "_repeat"
                                             },
                                             {
-                                                "type": 2,
-                                                "label": "View Original",
-                                                "style": "LINK",
-                                                "url": save_list[0]
+                                                type: 2,
+                                                label: "View Original",
+                                                style: "LINK",
+                                                url: save_list[0]
                                             }
                                                     ]
-                                        }
-                                    ]
+                                    }
+                                            ]
                                 })
                             }
                         }
