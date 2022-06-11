@@ -12,13 +12,11 @@ client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send("There is no prefix, enter `info` to get started, Just like this : ")
     guild.systemChannel.send(`info`)
     guild.systemChannel.send(`*pout* Seems my creator hasn't activated me just yet, DM him at 𝓑𝓵𝓪𝓷𝓬𝓓𝓮𝓞𝓯𝓯𝓲𝓬𝓲𝓪𝓵#2485`)
-    }
-)
+    })
   
 client.on('ready', () => { //Checks whether bot is running at logs on startup
     console.log(`Logged in as ${client.user.tag}!`);
-    }
-)
+    })
 
 client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //Bot accesses discord using Auth Discord Token
 
@@ -33,8 +31,7 @@ client.on('messageCreate', async msg => { //Adding a verified channel
                 fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
                 await msg.reply({
                     embeds: [require("./modules/admin_module/channel_ac")]
-                })
-            }
+                })}
             else {
                 await msg.reply({
                     embeds : [
@@ -42,11 +39,7 @@ client.on('messageCreate', async msg => { //Adding a verified channel
                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                             title: "This Channel Has Already Been Activated",
                             image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
-                        }
-                    ],
-                })
-            }
-        }
+                        }]})}}
         else {
             await msg.reply({
                 embeds : [
@@ -54,12 +47,7 @@ client.on('messageCreate', async msg => { //Adding a verified channel
                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                         title: "Contact A Verified User To Activate This Channel",
                         image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
-                    }
-                ],
-            })
-        }
-    }
-})
+                    }]})}}})
 
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
@@ -67,11 +55,7 @@ fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     content: String(require('./modules/str_module_store/' + file.slice(0, - 10) + '_module.js'))
-                    })
-                }
-            }
-        })
-    })
+                    })}}})})
 
 fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
@@ -79,11 +63,7 @@ fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [require('./modules/embed_module_store/' + file.slice(0, - 10) + '_module.js')]
-                    })
-                }
-            }
-        })
-    })
+                    })}}})})
 
 client.on('messageCreate', async msg => {
     if (whitelist[0].channels.includes(String(msg.channelId))){
@@ -95,10 +75,7 @@ client.on('messageCreate', async msg => {
                         title: (msg.member.user.tag),
                         description : ("Current Server Nickname! : " + msg.member.displayName),
                         image : {url : ("https://cdn.discordapp.com/avatars/" + msg.member.user.id + "/" + msg.member.user.avatar + ".png")}
-                        }
-                    ]
-                })
-            }
+                        }]})}
             
             else {
                 await msg.reply({
@@ -108,13 +85,7 @@ client.on('messageCreate', async msg => {
                             title: (JSON.parse((JSON.stringify(msg.mentions.users)))[0].tag),
                             description : ("Current Server Nickname : " + JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName),
                             image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png")}
-                        }
-                    ]
-                })
-            }
-        }
-    }
-})
+                        }]})}}}})
 
 fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
@@ -125,8 +96,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                         {
                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                             image : {url : (String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))}
-                        }
-                    ],
+                        }],
                     components: [
                         {
                             type: 1,
@@ -142,11 +112,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                     label: "View Original",
                                     style: "LINK",
                                     url: save_list[0]
-                                }
-                            ]
-                        }
-                    ]
-                })
+                                }]}]})
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
@@ -157,8 +123,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                     {
                                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                                         image : {url : (String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))}
-                                    }
-                                ],
+                                    }],
                                 ephemeral: true,
                                 components: [
                                     {
@@ -175,16 +140,4 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                                 label: "View Original",
                                                 style: "LINK",
                                                 url: save_list[0]
-                                            }
-                                                    ]
-                                    }
-                                            ]
-                                })
-                            }
-                        }
-                    }
-                })
-            }
-        }
-    })
-})
+                                            }]}]})}}}})}}})})
