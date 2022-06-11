@@ -3,9 +3,9 @@ const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require('fs')
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
-whitelist = [require("./modules/admin_module/white_list.json")]
+whitelist = [require("./modules/admin_module/white_list.json")] //User and Channel whitelist variable
 
-process.on('unhandledRejection', error => {})
+process.on('unhandledRejection', error => {}) //>.> if it works, it works
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -25,7 +25,7 @@ client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //B
 require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 
 
-client.on('messageCreate', async msg => {
+client.on('messageCreate', async msg => { //Adding a verified channel
     if ((msg.content).toLowerCase() === "admin.setup"){
         if (whitelist[0].users.includes(String(msg.author.id)) ===  true) {
             if (whitelist[0].channels.includes(msg.channelId) === false){
