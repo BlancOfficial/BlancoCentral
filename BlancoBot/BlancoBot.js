@@ -4,7 +4,7 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require('fs')
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 whitelist = [require("./modules/admin_module/white_list.json")] //User and Channel whitelist variable
-
+var data = []
 process.on('unhandledRejection', error => {}) //>.> if it works, it works
 
 client.on('guildCreate', guild => { // Runs when joining a new server
@@ -122,11 +122,12 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
         if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
+                data[file] = require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')
                 await msg.reply({
                     embeds: [
                         {
                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                            image : {url : (String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))}
+                            image : {url : (String(save_list[0] = String(data[file][Math.floor(Math.random() * String(data[file].length))])))}
                         }],
                     components: [
                         {
@@ -152,7 +153,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                 embeds: [
                                     {
                                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                                        image : {url : (String(save_list[0] = String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')[Math.floor(Math.random() * String(require('./modules/module_store/' + file.slice(0, - 10) + '_module.js').length))])))}
+                                        image : {url : (String(save_list[0] = String(data[file][Math.floor(Math.random() * String(data[file].length))])))}
                                     }],
                                 ephemeral: true,
                                 components: [
