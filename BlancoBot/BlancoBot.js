@@ -30,8 +30,11 @@ client.on('messageCreate', async msg => { //Adding a verified channel
                 whitelist[0].channels.push(msg.channelId)
                 fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
                 await msg.reply({
-                    embeds: [require("./modules/admin_module/channel_ac")]
-                })}
+                    embeds: [{
+                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                        title : ("Server has been Activated"),
+                        image : {url : "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png"},
+                    }]})}
             else {
                 await msg.reply({
                     embeds : [
@@ -47,11 +50,39 @@ client.on('messageCreate', async msg => { //Adding a verified channel
                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                         title: "Contact A Verified User To Activate This Channel",
                         image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
+                    }]})}}
+
+    if (msg.content.toLowerCase() === "admin.setup.priority"){
+        if (whitelist[0].users.includes(String(msg.author.id)) ===  true) {
+            if (whitelist[0].servers.includes(msg.guildId) === false){
+                whitelist[0].servers.push(msg.guildId)
+                fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
+                await msg.reply({
+                    embeds: [{
+                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                        title : ("Server has been Activated"),
+                        image : {url : "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png"},
+                    }]})}
+            else {
+                await msg.reply({
+                    embeds : [
+                        {
+                            color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                            title: "This Server Has Already Been Activated",
+                            image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
+                        }]})}}
+        else {
+            await msg.reply({
+                embeds : [
+                    {
+                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                        title: "Contact A Verified User To Activate This Server",
+                        image: {url: "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"}
                     }]})}}})
 
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (whitelist[0].channels.includes(String(msg.channelId))){
+        if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     content: String(require('./modules/str_module_store/' + file.slice(0, - 10) + '_module.js'))
@@ -59,14 +90,14 @@ fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
 
 fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (whitelist[0].channels.includes(String(msg.channelId))){
+        if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [require('./modules/embed_module_store/' + file.slice(0, - 10) + '_module.js')]
                     })}}})})
 
 client.on('messageCreate', async msg => {
-    if (whitelist[0].channels.includes(String(msg.channelId))){
+    if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
             if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined){
                 await msg.reply({
@@ -89,7 +120,7 @@ client.on('messageCreate', async msg => {
 
 fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (whitelist[0].channels.includes(String(msg.channelId))){
+        if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [
@@ -116,7 +147,6 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
-                    if (whitelist[0].channels.includes(String(interaction.channelId))){
                         if (interaction.customId === (file.slice(0, - 10)).toLowerCase() + "_repeat") {
                             await interaction.reply({
                                 embeds: [
@@ -140,4 +170,4 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                                 label: "View Original",
                                                 style: "LINK",
                                                 url: save_list[0]
-                                            }]}]})}}}})}}})})
+                                            }]}]})}}})}}})})
