@@ -37,4 +37,5 @@ module.exports = ["https://c.tenor.com/9V_G8kiWtToAAAAi/lily-and-marigold.gif",
 "https://c.tenor.com/83QLplerW8sAAAAC/anime-hug.gif",
 "https://64.media.tumblr.com/b2f15c0e2c34c1c61066bf68ecce3101/437f9546803cb244-c8/s540x810/daf95e811b6d5a1a7f10d8ac4329649d7f24323e.gifv",
 "https://c.tenor.com/o411h7whyhIAAAAC/hug-love.gif",
-"https://c.tenor.com/SIw6C9wrgPUAAAAC/anime-hug.gif"]
+"https://c.tenor.com/SIw6C9wrgPUAAAAC/anime-hug.gif",
+"https://c.tenor.com/I6YEqtV4gv8AAAAC/anime-hug-hug.gif"]

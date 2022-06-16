@@ -5,7 +5,7 @@ const fs = require('fs')
 save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
 whitelist = [require("./modules/admin_module/white_list.json")] //User and Channel whitelist variable
 var data = []
-process.on('unhandledRejection', error => {}) //>.> if it works, it works
+process.on('unhandledRejection', error => {console.log(error)}) //>.> if it works, it works
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -147,6 +147,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                 }]}]})
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
+                console.log(interaction)
                 if (interaction.isButton()) {
                         if (interaction.customId === (file.slice(0, - 10)).toLowerCase() + "_repeat") {
                             await interaction.reply({
@@ -172,3 +173,13 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                                 style: "LINK",
                                                 url: save_list[0]
                                             }]}]})}}})}}})})
+
+client.on('messageCreate', async msg => {
+    if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
+        if (msg.mentions.has("955119550058348585") == true) {
+        await msg.reply({
+            embeds: [
+                {
+                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                    image : {url : "https://cdn.discordapp.com/attachments/974423774877347891/987113907564986378/Pinged.png"}
+                }]})}}})
