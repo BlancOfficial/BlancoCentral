@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require('fs')
-save_list = ["https://cdn.discordapp.com/attachments/806288700736405506/957373290681339984/Error_MSG.png"]
+save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"]
 whitelist = [require("./modules/admin_module/white_list.json")] //User and Channel whitelist variable
 var data = []
 process.on('unhandledRejection', error => {console.log(error)}) //>.> if it works, it works
