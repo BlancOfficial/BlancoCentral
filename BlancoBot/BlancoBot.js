@@ -100,7 +100,6 @@ client.on('messageCreate', async msg => {
     if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
             if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined){
-                console.log(msg.member.roles)
                 await msg.reply({
                     embeds: [{
                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
