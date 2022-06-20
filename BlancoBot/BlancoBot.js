@@ -100,11 +100,16 @@ client.on('messageCreate', async msg => {
     if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
             if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined){
+                console.log(msg.member.roles)
                 await msg.reply({
                     embeds: [{
                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                         title: (msg.member.user.tag),
-                        description : ("Current Server Nickname! : " + msg.member.displayName),
+                        fields : [
+                            {name: "Current Server Nickname!", value : String(msg.member.displayName)},
+                            {name: "Highest Roles!", value : String(msg.member.roles.highest)}
+                        ],
+                        
                         image : {url : ("https://cdn.discordapp.com/avatars/" + msg.member.user.id + "/" + msg.member.user.avatar + ".png")}
                         }]})}
             
