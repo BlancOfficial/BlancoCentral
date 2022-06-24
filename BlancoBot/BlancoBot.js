@@ -29,7 +29,7 @@ client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //B
 
 require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 
-process.on('unhandledRejection', error => {console.log(error)}) //>.> if it works, it works
+process.on('unhandledRejection', error => {}) //>.> if it works, it works
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -110,7 +110,6 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                 }]}]})
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
-                console.log(interaction)
                 if (interaction.isButton()) {
                         if (interaction.customId === (file.slice(0, - 10)).toLowerCase() + "_repeat") {
                             await interaction.reply({
