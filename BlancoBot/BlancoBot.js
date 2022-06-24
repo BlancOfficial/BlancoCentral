@@ -11,6 +11,12 @@ const whitelist = [require("./modules/admin_module/white_list.json")] //User and
 const blacklist = [require("./modules/admin_module/black_list.json")] //User and Channel blacklist
 var data = []
 
+function DM_User(ID, msg_data) {
+    client.users.fetch(ID, false).then((user) => {
+        user.send(msg_data);
+       })}
+
+
 function verifyMSG(msg){
     if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
         if (blacklist[0].servers.includes(String(msg.guildId)) || blacklist[0].channels.includes(String(msg.channelId)) || blacklist[0].users.includes(String(msg.member.user.id))){}
@@ -192,12 +198,14 @@ client.on('messageCreate', async msg => { //admin
                         if (blacklist[0].users.includes(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id) === false){
                             blacklist[0].users.push(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id)
                             fs.writeFile("BlancoBot/modules/admin_module/black_list.json", JSON.stringify(blacklist[0]), err => {}),
-                            await msg.reply({
+                            DM_User(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id,
+                            {
                                 embeds: [{
                                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                                    title : JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName + " has been blocked by BlancoBot",
+                                    title : "You been blocked by BlancoBot",
                                     image : {url : oh}
-                                }]})}}}
+                                }]
+                            })}}}
 
                 else if ((msg.content).toLowerCase() === "admin.control"){
                     if (blacklist[0].channels.includes(msg.channelId) === false){
