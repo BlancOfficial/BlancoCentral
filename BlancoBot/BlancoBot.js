@@ -84,7 +84,7 @@ client.on('messageCreate', async msg => {
 fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg)){
-            if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
+            if ((msg.content).toLowerCase().slice(0, (file.slice(0, - 10)).toLowerCase().length) === (file.slice(0, - 10)).toLowerCase()) {
                 data[file] = require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')
                 await msg.reply({
                     embeds: [
