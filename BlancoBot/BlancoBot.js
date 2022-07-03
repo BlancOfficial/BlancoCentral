@@ -68,7 +68,7 @@ client.on('messageCreate', async msg => {
                             {name: "Highest Roles!", value : String(msg.member.roles.highest)}
                         ],
                         
-                        image : {url : ("https://cdn.discordapp.com/avatars/" + msg.member.user.id + "/" + msg.member.user.avatar + ".png")}
+                        image : {url : ("https://cdn.discordapp.com/avatars/" + msg.member.user.id + "/" + msg.member.user.avatar + ".png?size=1280")}
                         }]})}
             
             else {
@@ -78,7 +78,7 @@ client.on('messageCreate', async msg => {
                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                             title: (JSON.parse((JSON.stringify(msg.mentions.users)))[0].tag),
                             description : ("Current Server Nickname : " + JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName),
-                            image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png")}
+                            image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png?size=1280")}
                         }]})}}}})
 
 fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
