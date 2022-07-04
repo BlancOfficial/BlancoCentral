@@ -1,7 +1,5 @@
 //Required info to run, don't edit
-const { verify } = require('crypto');
 const Discord = require('discord.js');
-const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 const fs = require('fs');
 save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"]
 const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png"
@@ -10,6 +8,21 @@ const oh = "https://cdn.discordapp.com/attachments/974423774877347891/9888305723
 const whitelist = [require("./modules/admin_module/white_list.json")] //User and Channel whitelist
 const blacklist = [require("./modules/admin_module/black_list.json")] //User and Channel blacklist
 var data = []
+
+
+const client = new Discord.Client({
+    makeCache: Discord.Options.cacheWithLimits({
+		MessageManager: 200, // This is default
+		PresenceManager: 0,
+        messageCacheLifetime: 21600,
+        messageSweepInterval: 43200,
+        messageCacheMaxSize: 25,
+        messageEditHistoryMaxSize: 0,
+		// Add more class names here
+	}),
+    intents: ["GUILDS", "GUILD_MESSAGES"] 
+})
+
 
 function DM_User(ID, msg_data) {
     client.users.fetch(ID, false).then((user) => {
@@ -29,7 +42,7 @@ client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //B
 
 require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 
-process.on('unhandledRejection', error => {}) //>.> if it works, it works
+process.on('unhandledRejection', error => {console.log(error)}) //>.> if it works, it works
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -38,7 +51,8 @@ client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`*pout* Seems my creator hasn't activated me just yet, DM him at 𝓑𝓵𝓪𝓷𝓬𝓓𝓮𝓞𝓯𝓯𝓲𝓬𝓲𝓪𝓵#2485`)
     })
 
-
+Discord.CachedManager
+    
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg)){
@@ -197,6 +211,7 @@ client.on('messageCreate', async msg => { //admin
                         if (blacklist[0].users.includes(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id) === false){
                             blacklist[0].users.push(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id)
                             fs.writeFile("BlancoBot/modules/admin_module/black_list.json", JSON.stringify(blacklist[0]), err => {}),
+                            console.log(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id)
                             DM_User(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id,
                             {
                                 embeds: [{
@@ -250,3 +265,4 @@ client.on('messageCreate', async msg => { //admin
                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                     title: "Contact A Verified User To Activate This Channel",
                     image: {url: trying}}]})}}})
+                    
