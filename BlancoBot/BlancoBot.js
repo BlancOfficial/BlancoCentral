@@ -90,6 +90,7 @@ client.on('messageCreate', async msg => {
                         }]})}
             
             else {
+                console.log(String((JSON.stringify(msg.mentions.members))))
                 await msg.reply({
                     embeds: [
                         {
@@ -97,7 +98,8 @@ client.on('messageCreate', async msg => {
                             title: (JSON.parse((JSON.stringify(msg.mentions.users)))[0].tag),
                             fields : [
                                 {name: "Current Server Nickname!", value : JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName},
-                                {name: "Highest Role!", value : "<@&" + JSON.parse((JSON.stringify(msg.mentions.members)))[0].roles[0] + ">"}
+                                {name: "Highest Role!", value : "<@&" + JSON.parse((JSON.stringify(msg.mentions.members)))[0].roles[0] + ">"},
+                                {name: "Colour Hexcode!", value: String(JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayHexColor) || "This Feature is still in trial"},
                             ],
                             image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png?size=1280")}
                         }]})}}}})
