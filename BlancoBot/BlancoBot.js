@@ -74,7 +74,7 @@ fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
 client.on('messageCreate', async msg => {
     if (verifyMSG(msg)){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
-            if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined){
+            if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined || (String(msg.member.displayName) == JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName)){
                 await msg.reply({
                     embeds: [{
                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
@@ -99,7 +99,6 @@ client.on('messageCreate', async msg => {
                             fields : [
                                 {name: "Current Server Nickname!", value : JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName},
                                 {name: "Highest Role!", value : "<@&" + JSON.parse((JSON.stringify(msg.mentions.members)))[0].roles[0] + ">"},
-                                {name: "Colour Hexcode!", value: String(JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayHexColor) || "This Feature is still in trial"},
                             ],
                             image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png?size=1280")}
                         }]})}}}})
