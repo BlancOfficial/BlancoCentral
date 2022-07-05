@@ -81,7 +81,9 @@ client.on('messageCreate', async msg => {
                         title: (msg.member.user.tag),
                         fields : [
                             {name: "Current Server Nickname!", value : String(msg.member.displayName)},
-                            {name: "Highest Role!", value : String(msg.member.roles.highest)}
+                            {name: "Highest Role!", value : String(msg.member.roles.highest)},
+                            {name: "Colour Hexcode!", value: String(msg.member.displayHexColor)},
+                            {name: "Server Joined Date!", value: String(msg.member.joinedAt)},
                         ],
                         
                         image : {url : ("https://cdn.discordapp.com/avatars/" + msg.member.user.id + "/" + msg.member.user.avatar + ".png?size=1280")}
