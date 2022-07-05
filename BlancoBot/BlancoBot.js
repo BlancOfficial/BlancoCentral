@@ -81,7 +81,7 @@ client.on('messageCreate', async msg => {
                         title: (msg.member.user.tag),
                         fields : [
                             {name: "Current Server Nickname!", value : String(msg.member.displayName)},
-                            {name: "Highest Roles!", value : String(msg.member.roles.highest)}
+                            {name: "Highest Role!", value : String(msg.member.roles.highest)}
                         ],
                         
                         image : {url : ("https://cdn.discordapp.com/avatars/" + msg.member.user.id + "/" + msg.member.user.avatar + ".png?size=1280")}
@@ -93,7 +93,10 @@ client.on('messageCreate', async msg => {
                         {
                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                             title: (JSON.parse((JSON.stringify(msg.mentions.users)))[0].tag),
-                            description : ("Current Server Nickname : " + JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName),
+                            fields : [
+                                {name: "Current Server Nickname!", value : JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName},
+                                {name: "Highest Role!", value : "<@&" + JSON.parse((JSON.stringify(msg.mentions.members)))[0].roles[0] + ">"}
+                            ],
                             image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png?size=1280")}
                         }]})}}}})
 
