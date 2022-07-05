@@ -90,7 +90,6 @@ client.on('messageCreate', async msg => {
                         }]})}
             
             else {
-                console.log(String((JSON.stringify(msg.mentions.members))))
                 await msg.reply({
                     embeds: [
                         {
