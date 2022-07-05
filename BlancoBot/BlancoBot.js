@@ -12,15 +12,14 @@ var data = []
 
 const client = new Discord.Client({
     makeCache: Discord.Options.cacheWithLimits({
-		MessageManager: 200, // This is default
+		MessageManager: 500,
 		PresenceManager: 0,
         messageCacheLifetime: 21600,
         messageSweepInterval: 43200,
-        messageCacheMaxSize: 25,
+        messageCacheMaxSize: 100,
         messageEditHistoryMaxSize: 0,
-		// Add more class names here
 	}),
-    intents: ["GUILDS", "GUILD_MESSAGES"] 
+    intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] 
 })
 
 
@@ -51,8 +50,11 @@ client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`*pout* Seems my creator hasn't activated me just yet, DM him at 𝓑𝓵𝓪𝓷𝓬𝓓𝓮𝓞𝓯𝓯𝓲𝓬𝓲𝓪𝓵#2485`)
     })
 
-Discord.CachedManager
-    
+client.on('guildMemberAdd', new_member => { //DM new user
+    new_member.send(`Welcome New Friend!`)
+    new_member.send("https://cdn.discordapp.com/attachments/974423774877347891/993944924720480398/Welcome.png")
+})
+
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg)){
