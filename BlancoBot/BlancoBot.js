@@ -31,7 +31,7 @@ function DM_User(ID, msg_data) {
 
 function verifyMSG(msg){
     if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
-        if (blacklist[0].servers.includes(String(msg.guildId)) || blacklist[0].channels.includes(String(msg.channelId)) || blacklist[0].users.includes(String(msg.member.user.id))){}
+        if (blacklist[0].servers.includes(String(msg.guildId)) || blacklist[0].channels.includes(String(msg.channelId)) || blacklist[0].users.includes(String(msg.member.userID))){}
         else {return true}}
     return false}
 
