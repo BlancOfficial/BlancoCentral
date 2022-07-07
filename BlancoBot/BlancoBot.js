@@ -16,10 +16,10 @@ const client = new Discord.Client({
 		PresenceManager: 0,
         messageCacheLifetime: 21600,
         messageSweepInterval: 43200,
-        messageCacheMaxSize: 100,
+        messageCacheMaxSize: 500,
         messageEditHistoryMaxSize: 0,
 	}),
-    intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MEMBERS"] 
+    intents: ["GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"] //"MESSAGE_CONTENT"
 })
 
 
