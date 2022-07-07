@@ -1,1 +1,0 @@
-module.exports = ("https://cdn.discordapp.com/attachments/974423774877347891/993939030028857364/Feature_less.png")
