@@ -19,7 +19,7 @@ const client = new Discord.Client({
         messageCacheMaxSize: 500,
         messageEditHistoryMaxSize: 0,
 	}),
-    intents: ["GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"] //"MESSAGE_CONTENT"
+    intents: ["GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILDS"] //"MESSAGE_CONTENT"
 })
 
 
