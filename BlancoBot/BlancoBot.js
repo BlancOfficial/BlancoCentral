@@ -29,9 +29,9 @@ function DM_User(ID, msg_data) {
        })}
 
 
-function verifyMSG(msg){
+function verifyMSG(msg, userID){
     if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
-        if (blacklist[0].servers.includes(String(msg.guildId)) || blacklist[0].channels.includes(String(msg.channelId)) || blacklist[0].users.includes(String(msg.member.id))){}
+        if (blacklist[0].servers.includes(String(msg.guildId)) || blacklist[0].channels.includes(String(msg.channelId)) || blacklist[0].users.includes(String(userID))){}
         else {return true}}
     return false}
 
@@ -57,7 +57,7 @@ client.on('guildMemberAdd', new_member => { //DM new user
 
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (verifyMSG(msg)){
+        if (verifyMSG(msg, msg.member.id)){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     content: String(require('./modules/str_module_store/' + file.slice(0, - 10) + '_module.js'))
@@ -65,14 +65,14 @@ fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
 
 fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (verifyMSG(msg)){
+        if (verifyMSG(msg, msg.member.id)){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
                     embeds: [require('./modules/embed_module_store/' + file.slice(0, - 10) + '_module.js')]
                     })}}})})
 
 client.on('messageCreate', async msg => {
-    if (verifyMSG(msg)){
+    if (verifyMSG(msg, msg.member.id)){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
             if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined || (String(msg.member.displayName) == JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName)){
                 await msg.reply({
@@ -104,7 +104,7 @@ client.on('messageCreate', async msg => {
 
 fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
-        if (verifyMSG(msg)){
+        if (verifyMSG(msg, msg.member.id)){
             if ((msg.content).toLowerCase().slice(0, (file.slice(0, - 10)).toLowerCase().length) === (file.slice(0, - 10)).toLowerCase()) {
                 data[file] = require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')
                 await msg.reply({
@@ -158,7 +158,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                             }]}]})}}})}}})})
 
 client.on('messageCreate', async msg => {
-    if (verifyMSG(msg)){
+    if (verifyMSG(msg, msg.member.id)){
         if (msg.mentions.has("955119550058348585") == true) {
         await msg.reply({
             embeds: [
