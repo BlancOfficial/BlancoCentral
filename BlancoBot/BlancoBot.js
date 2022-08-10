@@ -213,7 +213,7 @@ client.on('messageCreate', async msg => { //admin
             else if (msg.content.toLowerCase().slice(0, 13) === "admin.control"){
 
                 if (msg.content.toLowerCase().slice(0, 20) == "admin.control.member"){
-                    if (JSON.parse((JSON.stringify(msg.mentions.users)))[0].id === undefined){msg.reply("undef Error")}
+                    if (JSON.parse((JSON.stringify(msg.mentions.users)))[0].id === undefined){await msg.reply("undef Error")}
                     else{
                         if (blacklist[0].users.includes(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id) === false){
                             blacklist[0].users.push(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id)
