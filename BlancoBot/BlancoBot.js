@@ -134,6 +134,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                 if (interaction.isButton()) {
                         if (interaction.customId === (file.slice(0, - 10)).toLowerCase() + "_repeat") {
                             await interaction.reply({
+                                fetchReply: true,
                                 embeds: [
                                     {
                                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
