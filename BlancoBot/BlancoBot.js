@@ -60,6 +60,7 @@ fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
         if (verifyMSG(msg, msg.member.id)){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
+                    fetchReply: true,
                     content: String(require('./modules/str_module_store/' + file.slice(0, - 10) + '_module.js'))
                     })}}})})
 
@@ -68,6 +69,7 @@ fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
         if (verifyMSG(msg, msg.member.id)){
             if ((msg.content).toLowerCase() === (file.slice(0, - 10)).toLowerCase()) {
                 await msg.reply({
+                    fetchReply: true,
                     embeds: [require('./modules/embed_module_store/' + file.slice(0, - 10) + '_module.js')]
                     })}}})})
 
@@ -76,6 +78,7 @@ client.on('messageCreate', async msg => {
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
             if (JSON.parse((JSON.stringify(msg.mentions.users)))[0] === undefined || (String(msg.member.displayName) == JSON.parse((JSON.stringify(msg.mentions.members)))[0].displayName)){
                 await msg.reply({
+                    fetchReply: true,
                     embeds: [{
                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                         title: (msg.member.user.tag),
@@ -91,6 +94,7 @@ client.on('messageCreate', async msg => {
             
             else {
                 await msg.reply({
+                    fetchReply: true,
                     embeds: [
                         {
                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
@@ -108,6 +112,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
             if ((msg.content).toLowerCase().slice(0, (file.slice(0, - 10)).toLowerCase().length) === (file.slice(0, - 10)).toLowerCase()) {
                 data[file] = require('./modules/module_store/' + file.slice(0, - 10) + '_module.js')
                 await msg.reply({
+                    fetchReply: true,
                     embeds: [
                         {
                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
@@ -162,6 +167,7 @@ client.on('messageCreate', async msg => {
     if (verifyMSG(msg, msg.member.id)){
         if (msg.mentions.has("955119550058348585") == true) {
         await msg.reply({
+            fetchReply: true,
             embeds: [
                 {
                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
@@ -178,6 +184,7 @@ client.on('messageCreate', async msg => { //admin
                             whitelist[0].channels.push(msg.channelId)
                             fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
                             await msg.reply({
+                                fetchReply: true,
                                 embeds: [{
                                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                                     title : ("Channel has been Activated"),
@@ -185,6 +192,7 @@ client.on('messageCreate', async msg => { //admin
                                 }]})}
                         else {
                             await msg.reply({
+                                fetchReply: true,
                                 embeds : [
                                     {
                                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
@@ -197,6 +205,7 @@ client.on('messageCreate', async msg => { //admin
                             whitelist[0].servers.push(msg.guildId)
                             fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
                             await msg.reply({
+                                fetchReply: true,
                                 embeds: [{
                                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                                     title : ("Server has been Activated"),
@@ -204,6 +213,7 @@ client.on('messageCreate', async msg => { //admin
                                 }]})}
                         else {
                             await msg.reply({
+                                fetchReply: true,
                                 embeds : [
                                     {
                                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
@@ -234,6 +244,7 @@ client.on('messageCreate', async msg => { //admin
                         blacklist[0].channels.push(msg.channelId)
                         fs.writeFile("BlancoBot/modules/admin_module/black_list.json", JSON.stringify(blacklist[0]), err => {})
                         await msg.reply({
+                            fetchReply: true,
                             embeds: [{
                                 color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                                 title : ("Channel has been Blocked by BlancoBot"),
@@ -241,6 +252,7 @@ client.on('messageCreate', async msg => { //admin
                             }]})}
                     else {
                         await msg.reply({
+                            fetchReply: true,
                             embeds : [
                                 {
                                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
@@ -253,6 +265,7 @@ client.on('messageCreate', async msg => { //admin
                         blacklist[0].servers.push(msg.guildId)
                         fs.writeFile("BlancoBot/modules/admin_module/black_list.json", JSON.stringify(blacklist[0]), err => {})
                         await msg.reply({
+                            fetchReply: true,
                             embeds: [{
                                 color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                                 title : ("Server has been Blocked by BlancoBot"),
@@ -260,6 +273,7 @@ client.on('messageCreate', async msg => { //admin
                             }]})}
                     else {
                         await msg.reply({
+                            fetchReply: true,
                             embeds : [
                                 {
                                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
@@ -268,6 +282,7 @@ client.on('messageCreate', async msg => { //admin
                                 }]})}}}}
     else {
         await msg.reply({
+            fetchReply: true,
             embeds : [
                 {
                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
