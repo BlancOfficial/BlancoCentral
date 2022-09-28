@@ -1,13 +1,13 @@
 //Required info to run, don't edit
 const Discord = require('discord.js');
 const fs = require('fs');
-save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"]
-const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png"
-const trying = "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png"
-const oh = "https://cdn.discordapp.com/attachments/974423774877347891/988830572363272222/Oh_No.png"
-const whitelist = [require("./modules/admin_module/white_list.json")] //User and Channel whitelist
-const blacklist = [require("./modules/admin_module/black_list.json")] //User and Channel blacklist
-var data = []
+save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"];
+const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png";
+const trying = "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png";
+const oh = "https://cdn.discordapp.com/attachments/974423774877347891/988830572363272222/Oh_No.png";
+const whitelist = [require("./modules/admin_module/white_list.json")]; //User and Channel whitelist
+const blacklist = [require("./modules/admin_module/black_list.json")]; //User and Channel blacklist
+var data = [];
 
 
 const client = new Discord.Client({
@@ -20,40 +20,40 @@ const client = new Discord.Client({
         messageEditHistoryMaxSize: 0,
 	}),
     intents: ["GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILDS"] //"MESSAGE_CONTENT"
-})
+});
 
 
 function DM_User(ID, msg_data) {
     client.users.fetch(ID, false).then((user) => {
         user.send(msg_data);
-       })}
+       })};
 
 
 function verifyMSG(msg, userID){
     if (whitelist[0].servers.includes(String(msg.guildId)) || whitelist[0].channels.includes(String(msg.channelId))){
         if (blacklist[0].servers.includes(String(msg.guildId)) || blacklist[0].channels.includes(String(msg.channelId)) || blacklist[0].users.includes(String(userID))){}
         else {return true}}
-    return false}
+    return false};
 
-client.on('ready', () => {console.log(`Logged in as ${client.user.tag}!`)})
+client.on('ready', () => {console.log(`Logged in as ${client.user.tag}!`)});
 
 client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //Bot accesses discord using Auth Discord Token
 
 require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 
-process.on('unhandledRejection', error => {console.log(error)}) //>.> if it works, it works
+process.on('unhandledRejection', error => {console.log(error)}); //>.> if it works, it works
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
     guild.systemChannel.send("There is no prefix, enter `info` to get started, Just like this : ")
     guild.systemChannel.send(`help`)
     guild.systemChannel.send(`*pout* Seems my creator hasn't activated me just yet, DM him at 𝓑𝓵𝓪𝓷𝓬𝓓𝓮𝓞𝓯𝓯𝓲𝓬𝓲𝓪𝓵#2485`)
-    })
+    });
 
 client.on('guildMemberAdd', new_member => { //DM new user
     new_member.send(`Welcome New Friend!`)
     new_member.send("https://cdn.discordapp.com/attachments/974423774877347891/993944924720480398/Welcome.png")
-})
+});
 
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
@@ -62,7 +62,7 @@ fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
                 await msg.reply({
                     fetchReply: true,
                     content: String(require('./modules/str_module_store/' + file.slice(0, - 10) + '_module.js'))
-                    })}}})})
+                    })}}})});
 
 fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
@@ -71,7 +71,7 @@ fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
                 await msg.reply({
                     fetchReply: true,
                     embeds: [require('./modules/embed_module_store/' + file.slice(0, - 10) + '_module.js')]
-                    })}}})})
+                    })}}})});
 
 client.on('messageCreate', async msg => {
     if (verifyMSG(msg, msg.member.id)){
@@ -104,7 +104,7 @@ client.on('messageCreate', async msg => {
                                 {name: "Highest Role!", value : "<@&" + JSON.parse((JSON.stringify(msg.mentions.members)))[0].roles[0] + ">"},
                             ],
                             image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png?size=1280")}
-                        }]})}}}})
+                        }]})}}}});
 
 fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
@@ -133,7 +133,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                     label: "View Original",
                                     style: "LINK",
                                     url: save_list[0]
-                                }]}]})
+                                }]}]});
 
             client.on('interactionCreate', async interaction => { //Function to handle Button Interaction replies
                 if (interaction.isButton()) {
@@ -161,7 +161,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                                 label: "View Original",
                                                 style: "LINK",
                                                 url: save_list[0]
-                                            }]}]})}}})}}})})
+                                            }]}]})}}})}}})});
 
 client.on('messageCreate', async msg => {
     if (verifyMSG(msg, msg.member.id)){
@@ -172,7 +172,7 @@ client.on('messageCreate', async msg => {
                 {
                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                     image : {url : "https://cdn.discordapp.com/attachments/974423774877347891/987113907564986378/Pinged.png"}
-                }]})}}})
+                }]})}}});
 
 
 client.on('messageCreate', async msg => { //admin
@@ -287,5 +287,5 @@ client.on('messageCreate', async msg => { //admin
                 {
                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                     title: "Contact A Verified User To Activate This Channel",
-                    image: {url: trying}}]})}}})
+                    image: {url: trying}}]})}}});
                     
