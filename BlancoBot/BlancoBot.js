@@ -1,12 +1,12 @@
-//Required info to run, don't edit
+//perma variables and origin variables
 const Discord = require('discord.js');
 const fs = require('fs');
 save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"];
 const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png";
 const trying = "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png";
 const oh = "https://cdn.discordapp.com/attachments/974423774877347891/988830572363272222/Oh_No.png";
-const whitelist = [require("./modules/admin_module/white_list.json")]; //User and Channel whitelist
-const blacklist = [require("./modules/admin_module/black_list.json")]; //User and Channel blacklist
+const whitelist = [require("./modules/admin_module/white_list.json")]; 
+const blacklist = [require("./modules/admin_module/black_list.json")];
 var data = [];
 
 
