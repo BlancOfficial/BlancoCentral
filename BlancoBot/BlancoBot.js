@@ -55,6 +55,7 @@ client.on('guildMemberAdd', new_member => { //DM new user
     new_member.send("https://cdn.discordapp.com/attachments/974423774877347891/993944924720480398/Welcome.png")
 });
 
+// Basic string based replies//
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg, msg.member.id)){
@@ -64,6 +65,7 @@ fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
                     content: String(require('./modules/str_module_store/' + file.slice(0, - 10) + '_module.js'))
                     })}}})});
 
+//Specific Embed based replies//
 fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg, msg.member.id)){
@@ -73,6 +75,7 @@ fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
                     embeds: [require('./modules/embed_module_store/' + file.slice(0, - 10) + '_module.js')]
                     })}}})});
 
+//Profile Command//
 client.on('messageCreate', async msg => {
     if (verifyMSG(msg, msg.member.id)){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
@@ -106,6 +109,7 @@ client.on('messageCreate', async msg => {
                             image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png?size=1280")}
                         }]})}}}});
 
+//Main running functions//
 fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg, msg.member.id)){
@@ -163,6 +167,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                                 url: save_list[0]
                                             }]}]})}}})}}})});
 
+//Mention Reply//
 client.on('messageCreate', async msg => {
     if (verifyMSG(msg, msg.member.id)){
         if (msg.mentions.has("955119550058348585") == true) {
@@ -174,7 +179,7 @@ client.on('messageCreate', async msg => {
                     image : {url : "https://cdn.discordapp.com/attachments/974423774877347891/987113907564986378/Pinged.png"}
                 }]})}}});
 
-
+//Admin Functions//
 client.on('messageCreate', async msg => { //admin
     if (msg.content.toLowerCase().slice(0, 6) === "admin."){
         if (whitelist[0].users.includes(String(msg.author.id)) ===  true){
