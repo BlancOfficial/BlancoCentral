@@ -1,1 +1,1 @@
-module.exports = "https://cdn.discordapp.com/attachments/974423774877347891/988830572363272222/Oh_No.png"
+module.exports = "https://cdn.discordapp.com/attachments/929502495070359572/1031311584510877816/Aaaaaaaaarrgggggghhhhhhh.mp4"
