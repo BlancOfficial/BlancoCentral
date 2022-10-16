@@ -1,5 +1,5 @@
 const thank = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png"
-const version_Bot = "v1.3.0"
+const version_Bot = "Public Release Version: Alpha_b2"
 const update_log = "`Added server verification options, just to prevent bot going boom incase my coding goes wrong 😌`"
 
 module.exports = {

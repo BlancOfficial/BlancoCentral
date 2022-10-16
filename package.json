@@ -1,6 +1,6 @@
 {
   "name": "BlancoCentral",
-  "version": "^1.3.0",
+  "version": "Public Release Version: Alpha_b2",
   "description": "An 'Edit to Purpose', multi use bot",
   "main": "run.js",
   "scripts": {
