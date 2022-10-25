@@ -37,7 +37,7 @@ function verifyMSG(msg, userID){
 
 client.on('ready', () => {console.log(`Logged in as ${client.user.tag}!`)});
 
-client.login("OTU1MTE5NTUwMDU4MzQ4NTg1.YjdCZQ.iZlAabxKBwCgK8SPe7N1sKOyTbE"); //Bot accesses discord using Auth Discord Token
+client.login(""); //[Insert] Bot accesses discord using Auth Discord Token
 
 require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 
