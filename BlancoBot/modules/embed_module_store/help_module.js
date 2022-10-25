@@ -1,4 +1,4 @@
-const thank = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png"
+const thank = "https://cdn.discordapp.com/attachments/806288700736405506/1034498054956531803/unknown.png"
 const version_Bot = "Public Release Version: Alpha_b2"
 const update_log = "`Added server verification options, just to prevent bot going boom incase my coding goes wrong 😌`"
 

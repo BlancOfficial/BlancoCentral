@@ -2,9 +2,11 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"];
+error_count = 0;
 const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png";
 const trying = "https://cdn.discordapp.com/attachments/974423774877347891/984579953830019072/Keep_Trying.png";
-const oh = "https://cdn.discordapp.com/attachments/974423774877347891/988830572363272222/Oh_No.png";
+const oh = "https://cdn.discordapp.com/attachments/721166435413524490/1033994602207776799/unknown.png";
+const recieved = "https://i.redd.it/3belzjkbpex61.jpg";
 const whitelist = [require("./modules/admin_module/white_list.json")]; 
 const blacklist = [require("./modules/admin_module/black_list.json")];
 var data = [];
@@ -41,7 +43,7 @@ client.login(require("../auth.json").BlancoBot); //Bot accesses discord using Au
 
 require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 
-process.on('unhandledRejection', error => {console.log(error)}); //>.> if it works, it works
+process.on('unhandledRejection', error => {console.log(error); error_count = error_count + 1}); //>.> if it works, it works
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
@@ -181,50 +183,60 @@ client.on('messageCreate', async msg => {
 
 //Admin Functions//
 client.on('messageCreate', async msg => { //admin
-    if (msg.content.toLowerCase().slice(0, 6) === "admin."){
+    if ((msg.content).toLowerCase().slice(0, 5) === "admin"){
         if (whitelist[0].users.includes(String(msg.author.id)) ===  true){
-            if ((msg.content).toLowerCase().slice(0, 11) === "admin.setup"){
-                if ((msg.content).toLowerCase() === "admin.setup"){
-                        if (whitelist[0].channels.includes(msg.channelId) === false){
-                            whitelist[0].channels.push(msg.channelId)
-                            fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
-                            await msg.reply({
-                                fetchReply: true,
-                                embeds: [{
-                                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                                    title : ("Channel has been Activated"),
-                                    image : {url : thanks},
-                                }]})}
-                        else {
-                            await msg.reply({
-                                fetchReply: true,
-                                embeds : [
-                                    {
+            if ((msg.content).toLowerCase().slice(0, 5) === "admin"){
+                await msg.reply({
+                    fetchReply : true,
+                    embeds : [{
+                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                        title : ("Command Directive Registered"),
+                        description : ("Authentication Check... Success \nSyncing Local History to HiveNet. \n" + error_count + " Errors Generated \nAwaiting Setup/Control Directive"),
+                        image : {url : recieved}
+                    }]
+                })
+                if ((msg.content).toLowerCase().slice(0, 11) === "admin.setup"){
+                    if ((msg.content).toLowerCase() === "admin.setup"){
+                            if (whitelist[0].channels.includes(msg.channelId) === false){
+                                whitelist[0].channels.push(msg.channelId)
+                                fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
+                                await msg.reply({
+                                    fetchReply: true,
+                                    embeds: [{
                                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                                        title: "This Channel Has Already Been Activated",
-                                        image: {url: trying}
-                                    }]})}}
+                                        title : ("Channel has been Activated"),
+                                        image : {url : thanks},
+                                    }]})}
+                            else {
+                                await msg.reply({
+                                    fetchReply: true,
+                                    embeds : [
+                                        {
+                                            color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                                            title: "This Channel Has Already Been Activated",
+                                            image: {url: trying}
+                                        }]})}}
 
-                else if (msg.content.toLowerCase() === "admin.setup.priority"){
-                        if (whitelist[0].servers.includes(msg.guildId) === false){
-                            whitelist[0].servers.push(msg.guildId)
-                            fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
-                            await msg.reply({
-                                fetchReply: true,
-                                embeds: [{
-                                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                                    title : ("Server has been Activated"),
-                                    image : {url : thanks},
-                                }]})}
-                        else {
-                            await msg.reply({
-                                fetchReply: true,
-                                embeds : [
-                                    {
+                    else if (msg.content.toLowerCase() === "admin.setup.priority"){
+                            if (whitelist[0].servers.includes(msg.guildId) === false){
+                                whitelist[0].servers.push(msg.guildId)
+                                fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
+                                await msg.reply({
+                                    fetchReply: true,
+                                    embeds: [{
                                         color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                                        title: "This Server Has Already Been Activated",
-                                        image: {url: trying}
-                                    }]})}}}
+                                        title : ("Server has been Activated"),
+                                        image : {url : thanks},
+                                    }]})}
+                            else {
+                                await msg.reply({
+                                    fetchReply: true,
+                                    embeds : [
+                                        {
+                                            color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                                            title: "This Server Has Already Been Activated",
+                                            image: {url: trying}
+                                        }]})}}}}
 
             else if (msg.content.toLowerCase().slice(0, 13) === "admin.control"){
 
