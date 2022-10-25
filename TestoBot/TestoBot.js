@@ -4,4 +4,4 @@ const { MessageEmbed } = require('discord.js');
 const fs = require('fs')
 process.on('unhandledRejection', error => {console.log(error)})
 client.on('ready', () => {console.log(`Logged in as ${client.user.tag}!`);});
-client.login("OTgxNTQ0NTE2ODQ0NjgzMzM0.GBcAWW.bKoX7YN-8kFa57Vp6HBrA14YvwRBsUFWPdGfXk"); 
+client.login(require("../auth.json").Repeato); 
