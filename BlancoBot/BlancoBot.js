@@ -185,7 +185,6 @@ client.on('messageCreate', async msg => {
 client.on('messageCreate', async msg => { //admin
     if ((msg.content).toLowerCase().slice(0, 5) === "admin"){
         if (whitelist[0].users.includes(String(msg.author.id)) ===  true){
-            if ((msg.content).toLowerCase().slice(0, 5) === "admin"){
                 await msg.reply({
                     fetchReply : true,
                     embeds : [{
@@ -236,25 +235,25 @@ client.on('messageCreate', async msg => { //admin
                                             color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                                             title: "This Server Has Already Been Activated",
                                             image: {url: trying}
-                                        }]})}}}}
+                                        }]})}}}
 
-            else if (msg.content.toLowerCase().slice(0, 13) === "admin.control"){
+                else if (msg.content.toLowerCase().slice(0, 13) === "admin.control"){
 
-                if (msg.content.toLowerCase().slice(0, 20) == "admin.control.member"){
-                    if (JSON.parse((JSON.stringify(msg.mentions.users)))[0].id === undefined){await msg.reply("undef Error")}
-                    else{
-                        if (blacklist[0].users.includes(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id) === false){
-                            blacklist[0].users.push(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id)
-                            fs.writeFile("BlancoBot/modules/admin_module/black_list.json", JSON.stringify(blacklist[0]), err => {}),
-                            console.log(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id)
-                            DM_User(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id,
-                            {
-                                embeds: [{
-                                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                                    title : "You been blocked by BlancoBot",
-                                    image : {url : oh}
-                                }]
-                            })}}}
+                    if (msg.content.toLowerCase().slice(0, 20) == "admin.control.member"){
+                        if (JSON.parse((JSON.stringify(msg.mentions.users)))[0].id === undefined){await msg.reply("undef Error")}
+                        else{
+                            if (blacklist[0].users.includes(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id) === false){
+                                blacklist[0].users.push(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id)
+                                fs.writeFile("BlancoBot/modules/admin_module/black_list.json", JSON.stringify(blacklist[0]), err => {}),
+                                console.log(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id)
+                                DM_User(JSON.parse((JSON.stringify(msg.mentions.users)))[0].id,
+                                {
+                                    embeds: [{
+                                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                                        title : "You been blocked by BlancoBot",
+                                        image : {url : oh}
+                                    }]
+                                })}}}
 
                 else if ((msg.content).toLowerCase() === "admin.control"){
                     if (blacklist[0].channels.includes(msg.channelId) === false){
@@ -304,5 +303,5 @@ client.on('messageCreate', async msg => { //admin
                 {
                     color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
                     title: "Contact A Verified User To Activate This Channel",
-                    image: {url: trying}}]})}}});
+                    image: {url: trying}}]})}}})
                     
