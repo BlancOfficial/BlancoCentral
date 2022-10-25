@@ -1,4 +1,4 @@
-if (require("./auth.json") == require("./"))
+if (require("./auth.json") == require("./_.json"))
     {
         console.log("Enter Bot Tokens inside './auth.json'")
     }
