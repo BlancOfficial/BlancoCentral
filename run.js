@@ -1,12 +1,19 @@
 if (require("./auth.json").BlancoBot == "")
     {
-        console.log("\n\nERROR: Enter Bot Tokens inside './auth.json'\n\n")
+        console.log("\nERROR: Enter BlancoBot Tokens inside './auth.json'\n")
     }
+else { require("./BlancoBot/BlancoBot") }
 
-else 
+if (require("./auth.json").Bruh == "")
     {
-        require("./BlancoBot/BlancoBot")
-        require("./BruhBot/BruhBot")
-        require("./RepeatoBot/RepeatoBot")
-        //require("./TestoBot/TestoBot")
+        console.log("\nERROR: Enter BruhBot Tokens inside './auth.json'\n")
     }
+else { require("./BruhBot/BruhBot") }
+
+if (require("./auth.json").Repeato == "")
+    {
+        console.log("\nERROR: Enter RepeatoBot Tokens inside './auth.json'\n")
+    }
+else { require("./RepeatoBot/RepeatoBot") }
+
+//require("./TestoBot/TestoBot")
