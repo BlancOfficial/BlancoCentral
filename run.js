@@ -1,6 +1,6 @@
-if (require("./auth.json") == require("./_.json"))
+if (require("./auth.json").BlancoBot == "")
     {
-        console.log("Enter Bot Tokens inside './auth.json'")
+        console.log("\n\nERROR: Enter Bot Tokens inside './auth.json'\n\n")
     }
 
 else 
