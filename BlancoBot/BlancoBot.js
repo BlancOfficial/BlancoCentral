@@ -185,17 +185,38 @@ client.on('messageCreate', async msg => {
 client.on('messageCreate', async msg => { //admin
     if ((msg.content).toLowerCase().slice(0, 5) === "admin"){
         if (whitelist[0].users.includes(String(msg.author.id)) ===  true){
-                await msg.reply({
-                    fetchReply : true,
-                    embeds : [{
-                        color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                        title : ("Command Directive Registered"),
-                        description : ("Authentication Check... Success \nSyncing Local History to HiveNet. \n" + error_count + " Errors Generated \nAwaiting Setup/Control Directive"),
-                        image : {url : recieved}
-                    }]
-                })
+                if ((msg.content).toLowerCase() === "admin"){
+                    await msg.reply({
+                        fetchReply : true,
+                        embeds : [{
+                            color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                            title : ("Command Directive Registered"),
+                            description : ("Authentication Check... Success \nSyncing Local History to HiveNet. \n" + error_count + " Errors Generated \nAwaiting Setup/Control Directive"),
+                            image : {url : recieved}
+                        }]
+                    })}
+                
+                if ((msg.content).toLowerCase() === "admin.help"){
+                    await msg.reply({
+                        fetchReply : true,
+                        embeds : [{
+                            color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                            title : ("Admin Help Menu"),
+                            description : (""),
+                            fields: [
+                                { name: 'Commands', value: '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=' },
+                                { name: '.setup', value: 'adds to whitelist', inline: true },
+                                { name: '.control', value: 'adds to blacklist', inline: true },
+                                { name: '.member', value: 'applies to member', inline: true },
+                                { name: '.channel', value: 'applies to channel', inline: true },
+                                { name: '.priority', value: 'applies to server', inline: true },
+                            ]
+                        }]
+                    })
+                }
+
                 if ((msg.content).toLowerCase().slice(0, 11) === "admin.setup"){
-                    if ((msg.content).toLowerCase() === "admin.setup"){
+                    if ((msg.content).toLowerCase() === "admin.setup.channel"){
                             if (whitelist[0].channels.includes(msg.channelId) === false){
                                 whitelist[0].channels.push(msg.channelId)
                                 fs.writeFile("BlancoBot/modules/admin_module/white_list.json", JSON.stringify(whitelist[0]), err => {})
@@ -255,7 +276,7 @@ client.on('messageCreate', async msg => { //admin
                                     }]
                                 })}}}
 
-                else if ((msg.content).toLowerCase() === "admin.control"){
+                else if ((msg.content).toLowerCase() === "admin.control.channel"){
                     if (blacklist[0].channels.includes(msg.channelId) === false){
                         blacklist[0].channels.push(msg.channelId)
                         fs.writeFile("BlancoBot/modules/admin_module/black_list.json", JSON.stringify(blacklist[0]), err => {})
