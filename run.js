@@ -1,11 +1,9 @@
-if (require("./auth.json").BlancoBot == "") { console.log("\nERROR: Enter BlancoBot Tokens inside './auth.json'\n") }
-else { console.log("Token has been read... Authenticating"); require("./BlancoBot/BlancoBot") };
+function startup(_JSON, BotName){
+    if (_JSON == "") { console.log("\nERROR: Enter " + BotName + " Tokens inside './auth.json'\n") }
+    else { console.log(BotName + "'s Token has been read... Authenticating"); require("./" + BotName + "/" + BotName) }
+}
 
-if (require("./auth.json").Bruh == "") { console.log("\nERROR: Enter BruhBot Tokens inside './auth.json'\n") }
-else { console.log("Token has been read... Authenticating"); require("./BruhBot/BruhBot") };
-
-if (require("./auth.json").Repeato == "") { console.log("\nERROR: Enter RepeatoBot Tokens inside './auth.json'\n") }
-else { console.log("Token has been read... Authenticating"); require("./RepeatoBot/RepeatoBot") };
-
-//if (require("./auth.json").Testo == "") { console.log("\nERROR: Enter TestoBot Tokens inside './auth.json'\n") }
-//else { console.log("Token has been read... Authenticating"); require("./TestoBot/TestoBot") };
+startup(require("./auth.json").BlancoBot, "BlancoBot")
+startup(require("./auth.json").Bruh, "BruhBot")
+startup(require("./auth.json").Repeato, "RepeatoBot")
+//startup(require("./auth.json").Testo, "TestoBot")
