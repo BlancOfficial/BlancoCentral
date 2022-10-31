@@ -1,6 +1,7 @@
 //perma variables and origin variables
 const Discord = require('discord.js');
 const fs = require('fs');
+const { fields } = require('./modules/embed_module_store/help_module');
 save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"];
 error_count = 0;
 const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png";
@@ -207,6 +208,8 @@ client.on('messageCreate', async msg => { //admin
                                 { name: 'Commands', value: '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=' },
                                 { name: '.setup', value: 'adds to whitelist', inline: true },
                                 { name: '.control', value: 'adds to blacklist', inline: true },
+                            ],
+                            fields: [
                                 { name: '.member', value: 'applies to member', inline: true },
                                 { name: '.channel', value: 'applies to channel', inline: true },
                                 { name: '.priority', value: 'applies to server', inline: true },
