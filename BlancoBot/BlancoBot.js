@@ -206,9 +206,13 @@ client.on('messageCreate', async msg => { //admin
                             description : (""),
                             fields: [
                                 { name: 'Commands', value: '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=-=-=-==-=-=-=-=-=-=' },
+                            ],
+                            description : "First Parameter",
+                            fields : [
                                 { name: '.setup', value: 'adds to whitelist', inline: true },
                                 { name: '.control', value: 'adds to blacklist', inline: true },
                             ],
+                            description : "Second Parameter",
                             fields: [
                                 { name: '.member', value: 'applies to member', inline: true },
                                 { name: '.channel', value: 'applies to channel', inline: true },
