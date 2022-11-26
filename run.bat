@@ -1,2 +1,3 @@
-node -v
+git stash
+git pull
 node .
