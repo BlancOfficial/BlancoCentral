@@ -72,7 +72,7 @@ const stable_horde = new StableHorde({
 
 client.on('messageCreate', async msg => {
     if (verifyMSG(msg, msg.member.id)){
-        if ((msg.content).toLowerCase().slice(0, - 10) === "image") {
+        if ((msg.content).toLowerCase().slice(0, - 5) === "image") {
             // start the generation of an image with the given payload
             generation = await stable_horde.postAsyncGenerate({
                 prompt: msg.content.slice(10)
