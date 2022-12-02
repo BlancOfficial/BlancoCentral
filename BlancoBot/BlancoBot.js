@@ -59,33 +59,6 @@ client.on('guildMemberAdd', new_member => { //DM new user
 });
 
 
-//AI image gen
-
-const StableHorde = require( "@zeldafan0225/stable_horde" )
- 
-const stable_horde = new StableHorde({
-    cache_interval: 1000 * 10,
-    cache: {
-        generations_check: 1000 * 30
-    }
-})
-
-client.on('messageCreate', async msg => {
-    if (verifyMSG(msg, msg.member.id)){
-        if ((msg.content).toLowerCase().slice(0, - 5) === "image") {
-            // start the generation of an image with the given payload
-            generation = await stable_horde.postAsyncGenerate({
-                prompt: msg.content.slice(5)
-            })
-            console.log(generation)
-
-            // check the status of your generation using the generations id
-            check = await stable_horde.getGenerationCheck(generation.id)
-            console.log(check)
-            console.log(stable_horde.cache.generations_check)
-        }}})
-
-
 // Basic string based replies//
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
