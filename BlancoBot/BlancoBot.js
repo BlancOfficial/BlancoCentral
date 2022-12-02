@@ -12,31 +12,6 @@ const whitelist = [require("./modules/admin_module/white_list.json")];
 const blacklist = [require("./modules/admin_module/black_list.json")];
 var data = [];
 
-//AI image gen
-
-const StableHorde = require( "@zeldafan0225/stable_horde" )
- 
-const stable_horde = new StableHorde({
-    cache_interval: 1000 * 10,
-    cache: {
-        generations_check: 1000 * 30
-    }
-})
-
-client.on('messageCreate', async msg => {
-    if (verifyMSG(msg, msg.member.id)){
-        if ((msg.content).toLowerCase().slice(0, - 10) === "image") {
-            // start the generation of an image with the given payload
-            generation = await stable_horde.postAsyncGenerate({
-                prompt: msg.content.slice(10)
-            })
-            console.log(generation)
-
-            // check the status of your generation using the generations id
-            check = await stable_horde.getGenerationCheck(generation.id)
-            console.log(check)
-        }}})
-
 
 const client = new Discord.Client({
     makeCache: Discord.Options.cacheWithLimits({
@@ -82,6 +57,33 @@ client.on('guildMemberAdd', new_member => { //DM new user
     new_member.send(`Welcome New Friend!`)
     new_member.send("https://cdn.discordapp.com/attachments/974423774877347891/993944924720480398/Welcome.png")
 });
+
+
+//AI image gen
+
+const StableHorde = require( "@zeldafan0225/stable_horde" )
+ 
+const stable_horde = new StableHorde({
+    cache_interval: 1000 * 10,
+    cache: {
+        generations_check: 1000 * 30
+    }
+})
+
+client.on('messageCreate', async msg => {
+    if (verifyMSG(msg, msg.member.id)){
+        if ((msg.content).toLowerCase().slice(0, - 10) === "image") {
+            // start the generation of an image with the given payload
+            generation = await stable_horde.postAsyncGenerate({
+                prompt: msg.content.slice(10)
+            })
+            console.log(generation)
+
+            // check the status of your generation using the generations id
+            check = await stable_horde.getGenerationCheck(generation.id)
+            console.log(check)
+        }}})
+
 
 // Basic string based replies//
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
