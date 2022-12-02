@@ -75,7 +75,7 @@ client.on('messageCreate', async msg => {
         if ((msg.content).toLowerCase().slice(0, - 5) === "image") {
             // start the generation of an image with the given payload
             generation = await stable_horde.postAsyncGenerate({
-                prompt: msg.content.slice(10)
+                prompt: msg.content.slice(5)
             })
             console.log(generation)
 
