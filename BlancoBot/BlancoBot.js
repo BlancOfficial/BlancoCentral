@@ -82,6 +82,7 @@ client.on('messageCreate', async msg => {
             // check the status of your generation using the generations id
             check = await stable_horde.getGenerationCheck(generation.id)
             console.log(check)
+            console.log(stable_horde.cache.generations_check)
         }}})
 
 
