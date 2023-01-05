@@ -1,5 +1,4 @@
-fail_chck=0
-chck=0
+fail_chck=0; chck=0
 
 function startup(_JSON, BotName){
     chck=chck+1
