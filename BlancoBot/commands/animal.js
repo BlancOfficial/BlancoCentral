@@ -2,11 +2,11 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('image') //Default
-		.setDescription('Posts an Image') //The Default Layout of a Command
+		.setName('Animal') //Default
+		.setDescription('Posts an Animal Image') //The Default Layout of a Command
         .addStringOption(option =>
-            option.setName('Image Type')
-                .setDescription('Animal Type/ Action')
+            option.setName('Species')
+                .setDescription('Species of the animal')
                 .setRequired(true)
                 .addChoices(
                     { name: 'Dog', value: 'awoo' },
@@ -15,17 +15,15 @@ module.exports = {
                     { name: 'Ferret', value: 'ferret' },
                     { name: 'Fox', value: 'foxy' },
                     { name: 'Guwr Gura', value: 'guwr' },
-                    { name: 'Hug', value: 'hug' },
                     { name: 'Koala', value: 'koko' },
                     { name: 'Lion', value: 'lion' },
                     { name: 'Fish', value: 'meemee' },
                     { name: 'Panda', value: 'panda' },
-                    { name: 'Pat', value: 'pat' },
                     { name: 'ping', value: 'ping' },
                     { name: 'pong', value: 'ping' },
                 )),
 	async execute(interaction) {
-        category = interaction.options.getString('Image Type');
+        category = interaction.options.getString('Species');
         data[file] = require('../modules/module_store/' + interaction.options.getString('category') + '_module.js')
 		await interaction.reply({
             embeds: [

@@ -26,3 +26,6 @@ Updating from Discord JS v13 to v14, in order to support Discord API v10, Blanco
 I have made decent headway into the process in which I'd have to do this, however there is much still to do. 😭
 
 This would also go a long way in making the code look more legible.
+
+To add ping mentions on action commands.
+To slash profile and admin
