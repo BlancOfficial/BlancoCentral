@@ -1,7 +1,5 @@
 # BlancoCentral
 
----
-
 _To run the file, ensure [node.js](https://nodejs.org/en/download/releases/) is downloaded_
 
 ---
