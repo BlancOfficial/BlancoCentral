@@ -1,19 +1,15 @@
 const { REST, Routes } = require('discord.js');
-const app_ID = require('./auth.json').BlancoBot_Application_ID;
-const token = require('./auth.json'.BlancoBot)
+const client_ID = require("./auth.json").BlancoBot_Client_ID
+const token = require("./auth.json").BlancoBot
 const fs = require('node:fs');
 
 const commands = [];
 // Grab all the command files from the commands directory you created earlier
-const commandFiles = fs.readdirSync('./BlancoBot/commands').filter(file => file.endsWith('.js'));
-
-
-if (app_ID == "") { console.log("Error : No Application ID has been entered into './auth.json'")}
-
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 // Grab the SlashCommandBuilder#toJSON() output of each command's data for deployment
 for (const file of commandFiles) {
-	const command = require(`./BlancoBot/commands/${file}`);
+	const command = require(`./commands/${file}`);
 	commands.push(command.data.toJSON());
 }
 
@@ -26,7 +22,7 @@ const rest = new REST({ version: '10' }).setToken(token);
 
 		// The put method is used to fully refresh all commands in the guild with the current set
 		const data = await rest.put(
-			Routes.applicationGuildCommands(app_ID),
+			Routes.applicationCommands(client_ID),
 			{ body: commands },
 		);
 
