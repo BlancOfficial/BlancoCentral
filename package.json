@@ -4,10 +4,11 @@
   "description": "An 'Edit to Purpose', multi use bot",
   "main": "run.js",
   "scripts": {
-    "start": "node ."
+    "start": "node .",
+    "Command Refresh" : "node deploy-commands.js"
   },
   "keywords": [],
-  "author": "The Ritualist and The Kraken and... a god?",
+  "author": "BlancDeOfficial",
   "license": "BlanCorp",
   "dependencies": {
     "@zeldafan0225/stable_horde": "^1.3.3",
