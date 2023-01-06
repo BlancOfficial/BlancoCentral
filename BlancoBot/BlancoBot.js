@@ -4,7 +4,6 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const { fields } = require('./modules/embed_module_store/help_module');
-client.commands = new Collection();
 save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"];
 error_count = 0;
 const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png";
@@ -29,7 +28,7 @@ const client = new Discord.Client({
 });
 
 
-
+client.commands = new Collection();
 
 function DM_User(ID, msg_data) {
     client.users.fetch(ID, false).then((user) => {
