@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('A') //Default
+		.setName('a') //Default
 		.setDescription('Posts A') //The Default Layout of a Command
         ,
 	async execute(interaction) {

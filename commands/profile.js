@@ -2,11 +2,11 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('Profile') //Default
+		.setName('profile') //Default
 		.setDescription('View Profile of a specific User') //The Default Layout of a Command
         .addUserOption(option =>
             option
-                .setName('User')
+                .setName('user')
                 .setDescription('The member to print the profile of. Default is yourself')
                 .setRequired(false)),
 	async execute(interaction) {

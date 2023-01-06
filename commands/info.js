@@ -2,8 +2,8 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('pat') //Default
-		.setDescription('Posts pat gif') //The Default Layout of a Command
+		.setName('info') //Default
+		.setDescription('Information on the Bot') //The Default Layout of a Command
         ,
 	async execute(interaction) {
         data = require('../modules/embed_module_store/help_module.js')

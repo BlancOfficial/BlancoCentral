@@ -2,7 +2,7 @@
   "name": "BlancoCentral",
   "version": "Public Release Version: Alpha_c",
   "description": "An 'Edit to Purpose', multi use bot",
-  "main": "run.js",
+  "main": "./run.js",
   "scripts": {
     "start": "node .",
     "Command Refresh": "node deploy-commands.js"

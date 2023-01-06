@@ -2,10 +2,10 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('Animal') //Default
+		.setName('animal') //Default
 		.setDescription('Posts an Animal Image') //The Default Layout of a Command
         .addStringOption(option =>
-            option.setName('Species')
+            option.setName('sspecies')
                 .setDescription('Species of the animal')
                 .setRequired(true)
                 .addChoices(

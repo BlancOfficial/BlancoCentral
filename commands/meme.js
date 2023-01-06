@@ -2,11 +2,11 @@ const { SlashCommandBuilder } = require('discord.js');
 
 module.exports = {
 	data: new SlashCommandBuilder()
-		.setName('Meme') //Default
+		.setName('meme') //Default
 		.setDescription('Posts a Meme reaction') //The Default Layout of a Command
         .addStringOption(option =>
             option.setName('reaction')
-                .setDescription('')
+                .setDescription('Type of reaction')
                 .setRequired(true)
                 .addChoices(
                     { name: '😤', value: '😤' },
@@ -28,7 +28,7 @@ module.exports = {
 
                 )),
 	async execute(interaction) {
-        category = interaction.options.getString('Species');
+        category = interaction.options.getString('reaction');
 		await interaction.reply({
             content: String(require('./modules/str_module_store/' + category + '_module.js'))
         }); //Response

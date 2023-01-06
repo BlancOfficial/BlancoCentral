@@ -1,8 +1,2 @@
-function startup(_JSON, BotName){
-    if (_JSON == "") {console.log("\nERROR: Enter " + BotName + " Tokens inside './auth.json'\n") }
-    else { console.log(BotName + "'s Token has been read... Authenticating"); require("./" + BotName + "/" + BotName) }
-}
-
-startup(require("./auth.json").BlancoBot, "BlancoBot")
-startup(require("./auth.json").Bruh, "BruhBot")
-startup(require("./auth.json").Repeato, "RepeatoBot")
+if (require("./auth.json").BlancoBot == "") {console.log("\nERROR: Enter BlancoBot's Tokens inside './auth.json'\n") }
+else { console.log("BlancoBot's Token has been read... Authenticating"); require("./BlancoBot") }
