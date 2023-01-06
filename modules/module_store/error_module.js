@@ -1,0 +1,1 @@
+module.exports = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"]

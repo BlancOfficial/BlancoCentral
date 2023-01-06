@@ -30,7 +30,7 @@ module.exports = {
 	async execute(interaction) {
         category = interaction.options.getString('reaction');
 		await interaction.reply({
-            content: String(require('./modules/str_module_store/' + category + '_module.js'))
+            content: String(require('../modules/str_module_store/' + category + '_module.js'))
         }); //Response
 	},
 };

@@ -5,7 +5,7 @@ module.exports = {
 		.setName('animal') //Default
 		.setDescription('Posts an Animal Image') //The Default Layout of a Command
         .addStringOption(option =>
-            option.setName('sspecies')
+            option.setName('species')
                 .setDescription('Species of the animal')
                 .setRequired(true)
                 .addChoices(
@@ -23,13 +23,14 @@ module.exports = {
                     { name: 'pong', value: 'ping' },
                 )),
 	async execute(interaction) {
-        category = interaction.options.getString('Species');
-        data[file] = require('../modules/module_store/' + interaction.options.getString('category') + '_module.js')
+        console.log("")
+        const category = interaction.options.getString('species') ?? 'error';
+        const data = require('../modules/module_store/' + category + '_module.js')
 		await interaction.reply({
             embeds: [
                 {
-                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                    image : {url : (String(save_list[0] = String(data[file][Math.floor(Math.random() * String(data[file].length))])))}
+                    color : Math.floor(Math.random()*16777215),
+                    image : {url : (String(save_list[0] = String(data[Math.floor(Math.random() * String(data.length))])))}
                 }],
         }); //Response
 	},

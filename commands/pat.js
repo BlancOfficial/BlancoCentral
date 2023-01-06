@@ -6,12 +6,12 @@ module.exports = {
 		.setDescription('Posts pat gif') //The Default Layout of a Command
         ,
 	async execute(interaction) {
-        data[file] = require('../modules/module_store/pat_module.js')
+        const data = require('../modules/module_store/pat_module.js')
 		await interaction.reply({
             embeds: [
                 {
-                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
-                    image : {url : (String(save_list[0] = String(data[file][Math.floor(Math.random() * String(data[file].length))])))}
+                    color : Math.floor(Math.random()*16777215),
+                    image : {url : (String(save_list[0] = String(data[Math.floor(Math.random() * String(data.length))])))}
                 }],
         }); //Response
 	},

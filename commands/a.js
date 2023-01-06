@@ -9,7 +9,7 @@ module.exports = {
 		await interaction.reply({
             embeds: [
                 {
-                    color : (String("#" + Math.floor(Math.random()*16777215).toString(16))),
+                    color : Math.floor(Math.random()*16777215),
                     image : {url : "https://c.tenor.com/ITCxOG7Jd_EAAAAC/gawr-gura-gawr.gif"},
                 }],
         }); //Response

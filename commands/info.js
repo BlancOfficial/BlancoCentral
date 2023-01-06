@@ -1,16 +1,22 @@
 const { SlashCommandBuilder } = require('discord.js');
 
+const thank = "https://cdn.discordapp.com/attachments/806288700736405506/1034498054956531803/unknown.png"
+const version_Bot = "Public Release Version: Alpha_D"
+const update_log = "`Implemented Slash Commands`"
+
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('info') //Default
 		.setDescription('Information on the Bot') //The Default Layout of a Command
         ,
 	async execute(interaction) {
-        data = require('../modules/embed_module_store/help_module.js')
+        const info = require('../modules/embed_module_store/help_module.js')
 		await interaction.reply({
             embeds: [
                 {
-                    data
+                    color : Math.floor(Math.random()*16777215),
+                    description : ("Currently running " + version_Bot + "\n" + "Change log : " + update_log),
+                    image : {url : thank},
                 }],
         }); //Response
 	},
