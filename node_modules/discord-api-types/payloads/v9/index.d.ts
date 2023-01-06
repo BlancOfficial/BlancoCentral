@@ -1,7 +1,6 @@
 export * from '../common';
 export * from './application';
 export * from './auditLog';
-export * from './autoModeration';
 export * from './channel';
 export * from './emoji';
 export * from './gateway';
