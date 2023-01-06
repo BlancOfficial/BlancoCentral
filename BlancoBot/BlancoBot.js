@@ -3,7 +3,6 @@ const Discord = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
-const { fields } = require('./modules/embed_module_store/help_module');
 save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"];
 error_count = 0;
 const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png";
@@ -15,17 +14,7 @@ const blacklist = [require("./modules/admin_module/black_list.json")];
 var data = [];
 
 
-const client = new Discord.Client({
-    makeCache: Discord.Options.cacheWithLimits({
-		MessageManager: 500,
-		PresenceManager: 0,
-        messageCacheLifetime: 21600,
-        messageSweepInterval: 43200,
-        messageCacheMaxSize: 500,
-        messageEditHistoryMaxSize: 0,
-	}),
-    intents: ["GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILDS"] //"MESSAGE_CONTENT"
-});
+const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 
 client.commands = new Collection();
@@ -43,7 +32,7 @@ function verifyMSG(msg, userID){
     return false};
 
 
-client.on('ready', () => {console.log(`Logged in as ${client.user.tag}!`)}); //activates client and awaits connecetion confirmation
+client.once(Events.ClientReady, c => { console.log(`Ready! Logged in as ${c.user.tag}`);}); //activates client and awaits connecetion confirmation
 
 client.login(require("../auth.json").BlancoBot); //Bot accesses discord using Auth Discord Token
 
