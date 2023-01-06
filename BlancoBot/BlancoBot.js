@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { fields } = require('./modules/embed_module_store/help_module');
 save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"];
 error_count = 0;
 const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png";
@@ -14,10 +15,17 @@ const blacklist = [require("./modules/admin_module/black_list.json")];
 var data = [];
 
 
-const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-
-
-client.commands = new Collection();
+const client = new Discord.Client({
+    makeCache: Discord.Options.cacheWithLimits({
+		MessageManager: 500,
+		PresenceManager: 0,
+        messageCacheLifetime: 21600,
+        messageSweepInterval: 43200,
+        messageCacheMaxSize: 500,
+        messageEditHistoryMaxSize: 0,
+	}),
+    intents: ["GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS", "GUILDS"] //"MESSAGE_CONTENT"
+});
 
 function DM_User(ID, msg_data) {
     client.users.fetch(ID, false).then((user) => {
@@ -32,7 +40,7 @@ function verifyMSG(msg, userID){
     return false};
 
 
-client.once(Events.ClientReady, c => { console.log(`Ready! Logged in as ${c.user.tag}`);}); //activates client and awaits connecetion confirmation
+client.on('ready', () => {console.log(`Logged in as ${client.user.tag}!`)}); //activates client and awaits connecetion confirmation
 
 client.login(require("../auth.json").BlancoBot); //Bot accesses discord using Auth Discord Token
 
@@ -50,61 +58,6 @@ client.on('guildCreate', guild => { // Runs when joining a new server
 client.on('guildMemberAdd', new_member => { //DM new user
     new_member.send(`Welcome New Friend!`)
     new_member.send("https://cdn.discordapp.com/attachments/974423774877347891/993944924720480398/Welcome.png")
-});
-
-
-//Slash Command Setup
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
-	const command = require(filePath);
-	// Set a new item in the Collection with the key as the command name and the value as the exported module
-	if ('data' in command && 'execute' in command) {
-		client.commands.set(command.data.name, command);
-	} else {
-		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
-	}
-}
-
-//Slash interaction listener
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	const command = interaction.client.commands.get(interaction.commandName);
-
-	if (!command) {
-		console.error(`No command matching ${interaction.commandName} was found.`);
-		return;
-	}
-
-	try {
-		await command.execute(interaction);
-	} catch (error) {
-		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
-});
-
-//Slash Command Autocomplete
-client.on('interactionCreate', async interaction => {
-	if (interaction.isChatInputCommand()) {
-		// command handling
-	} else if (interaction.isAutocomplete()) {
-		const command = interaction.client.commands.get(interaction.commandName);
-
-		if (!command) {
-			console.error(`No command matching ${interaction.commandName} was found.`);
-			return;
-		}
-
-		try {
-			await command.autocomplete(interaction);
-		} catch (error) {
-			console.error(error);
-		}
-	}
 });
 
 
