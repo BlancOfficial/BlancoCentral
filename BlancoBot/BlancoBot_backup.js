@@ -1,10 +1,7 @@
 //perma variables and origin variables
 const Discord = require('discord.js');
-const fs = require('node:fs');
-const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const fs = require('fs');
 const { fields } = require('./modules/embed_module_store/help_module');
-client.commands = new Collection();
 save_list = ["https://cdn.discordapp.com/attachments/974423774877347891/987468861752352818/BlancoError.png"];
 error_count = 0;
 const thanks = "https://cdn.discordapp.com/attachments/806288700736405506/973295870550360164/Thanks.png";
@@ -29,8 +26,6 @@ const client = new Discord.Client({
 });
 
 
-
-
 function DM_User(ID, msg_data) {
     client.users.fetch(ID, false).then((user) => {
         user.send(msg_data);
@@ -43,8 +38,7 @@ function verifyMSG(msg, userID){
         else {return true}}
     return false};
 
-
-client.on('ready', () => {console.log(`Logged in as ${client.user.tag}!`)}); //activates client and awaits connecetion confirmation
+client.on('ready', () => {console.log(`Logged in as ${client.user.tag}!`)});
 
 client.login(require("../auth.json").BlancoBot); //Bot accesses discord using Auth Discord Token
 
@@ -65,63 +59,7 @@ client.on('guildMemberAdd', new_member => { //DM new user
 });
 
 
-//Slash Command Setup
-const commandsPath = path.join(__dirname, 'commands');
-const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-	const filePath = path.join(commandsPath, file);
-	const command = require(filePath);
-	// Set a new item in the Collection with the key as the command name and the value as the exported module
-	if ('data' in command && 'execute' in command) {
-		client.commands.set(command.data.name, command);
-	} else {
-		console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
-	}
-}
-
-//Slash interaction listener
-client.on(Events.InteractionCreate, async interaction => {
-	if (!interaction.isChatInputCommand()) return;
-
-	const command = interaction.client.commands.get(interaction.commandName);
-
-	if (!command) {
-		console.error(`No command matching ${interaction.commandName} was found.`);
-		return;
-	}
-
-	try {
-		await command.execute(interaction);
-	} catch (error) {
-		console.error(error);
-		await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-	}
-});
-
-//Slash Command Autocomplete
-client.on('interactionCreate', async interaction => {
-	if (interaction.isChatInputCommand()) {
-		// command handling
-	} else if (interaction.isAutocomplete()) {
-		const command = interaction.client.commands.get(interaction.commandName);
-
-		if (!command) {
-			console.error(`No command matching ${interaction.commandName} was found.`);
-			return;
-		}
-
-		try {
-			await command.autocomplete(interaction);
-		} catch (error) {
-			console.error(error);
-		}
-	}
-});
-
-
-
-// Basic string based replies// Slashed
+// Basic string based replies//
 fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg, msg.member.id)){
@@ -131,7 +69,7 @@ fs.readdirSync("./BlancoBot/modules/str_module_store/").forEach(file => {
                     content: String(require('./modules/str_module_store/' + file.slice(0, - 10) + '_module.js'))
                     })}}})});
 
-//Specific Embed based replies// Slashed
+//Specific Embed based replies//
 fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg, msg.member.id)){
@@ -141,7 +79,7 @@ fs.readdirSync("./BlancoBot/modules/embed_module_store/").forEach(file => {
                     embeds: [require('./modules/embed_module_store/' + file.slice(0, - 10) + '_module.js')]
                     })}}})});
 
-//Profile Command// To be Slashed
+//Profile Command//
 client.on('messageCreate', async msg => {
     if (verifyMSG(msg, msg.member.id)){
         if ((msg.content).toLowerCase().slice(0, 7) === "profile") {
@@ -175,7 +113,7 @@ client.on('messageCreate', async msg => {
                             image : {url : ("https://cdn.discordapp.com/avatars/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].id + "/" + JSON.parse((JSON.stringify(msg.mentions.users)))[0].avatar + ".png?size=1280")}
                         }]})}}}});
 
-//Main running functions// Slashed
+//Main running functions//
 fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
     client.on('messageCreate', async msg => {
         if (verifyMSG(msg, msg.member.id)){
@@ -233,7 +171,7 @@ fs.readdirSync("./BlancoBot/modules/module_store").forEach(file => {
                                                 url: save_list[0]
                                             }]}]})}}})}}})});
 
-//Mention Reply// Don't slash
+//Mention Reply//
 client.on('messageCreate', async msg => {
     if (verifyMSG(msg, msg.member.id)){
         if (msg.mentions.has("955119550058348585") == true) {
@@ -245,7 +183,7 @@ client.on('messageCreate', async msg => {
                     image : {url : "https://cdn.discordapp.com/attachments/974423774877347891/987113907564986378/Pinged.png"}
                 }]})}}});
 
-//Admin Functions// To be Slashed
+//Admin Functions//
 client.on('messageCreate', async msg => { //admin
     if ((msg.content).toLowerCase().slice(0, 5) === "admin"){
         if (whitelist[0].users.includes(String(msg.author.id)) ===  true){
