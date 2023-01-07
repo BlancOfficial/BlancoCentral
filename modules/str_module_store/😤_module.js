@@ -1,0 +1,1 @@
+module.exports = "https://cdn.discordapp.com/attachments/806288700736405506/1031319673536532601/Dominance.png"
