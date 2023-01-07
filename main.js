@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
