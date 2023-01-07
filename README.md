@@ -15,17 +15,11 @@ Remember to add your bot credentials to `auth.json`.
 ## Basis
 
 BlancoCentral is a culmination of months dedicated to bashing my head againt dicord js while ignoring the documentation.
-It's a 3 part project but due to Discord API v10 both BruhBot and RepeatoBot will have to be layed to rest, leaving BlancoBot as the final survivor.
+It was a 3 part project but due to Discord API v10 both BruhBot and RepeatoBot were both laid to rest, leaving BlancoBot as the final survivor.
 
 ---
 
 ## Plan
 
-Updating from Discord JS v13 to v14, in order to support Discord API v10, BlancoBot requires extensive work to ensure that all message based commands are switched for slash commands
-
-I have made decent headway into the process in which I'd have to do this, however there is much still to do. 😭
-
-This would also go a long way in making the code look more legible.
-
 To add ping mentions on action commands.
-To slash profile and admin
+To slash profile and admin commands
