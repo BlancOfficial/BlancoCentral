@@ -23,7 +23,6 @@ module.exports = {
                     { name: 'pong', value: 'ping' },
                 )),
 	async execute(interaction) {
-        console.log("")
         const category = interaction.options.getString('species') ?? 'error';
         const data = require('../modules/module_store/' + category + '_module.js')
 		await interaction.reply({

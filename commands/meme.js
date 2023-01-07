@@ -24,6 +24,7 @@ module.exports = {
                     { name: 'sips', value: 'sips' },
                     { name: 'TwT', value: 'twt' },
                     { name: 'um', value: 'um' },
+                    { name: 'bruh', value: 'bruh'}
 
 
                 )),
