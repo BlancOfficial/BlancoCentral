@@ -30,7 +30,7 @@ module.exports = {
             embeds: [
                 {
                     color : Math.floor(Math.random()*16777215),
-                    image : {url : (String(save_list[0] = String(data[Math.floor(Math.random() * String(data.length))])))}
+                    image : {url : data[Math.floor(Math.random() * String(data.length))]}
                 }],
         }); //Response
 	},
