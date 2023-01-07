@@ -2,7 +2,7 @@ const { SlashCommandBuilder } = require('discord.js');
 
 const thank = "https://cdn.discordapp.com/attachments/806288700736405506/1034498054956531803/unknown.png"
 const version_Bot = "Public Release Version: Alpha_D"
-const update_log = "`Implemented Slash Commands`"
+const update_log = "`Implemented Slash Commands, Still working on pingable hugs/pats and profile features`"
 
 module.exports = {
 	data: new SlashCommandBuilder()

@@ -6,7 +6,7 @@ _To run this discord bot backend, ensure [node.js](https://nodejs.org/en/downloa
 
 ## Runtime
 
- Run the `run.bat` file, alternatively open terminal within the `BlancoBot` folder and enter `node .`
+Run the `run.bat` file, alternatively open terminal within the `BlancoBot` folder and enter `node deploy-commands.js`, then `node .`
 
 Remember to add your bot credentials to `auth.json`.
 
@@ -22,4 +22,4 @@ It was a 3 part project but due to Discord API v10 both BruhBot and RepeatoBot w
 ## Plan
 
 To add ping mentions on action commands.
-To slash profile and admin commands
+To slash profile commands
