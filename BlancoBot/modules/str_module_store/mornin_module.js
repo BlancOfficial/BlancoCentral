@@ -1,1 +1,0 @@
-module.exports = "https://cdn.discordapp.com/attachments/806288700736405506/1031320933299912774/Mornin.png"
