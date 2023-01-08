@@ -19,8 +19,6 @@ module.exports = {
                     { name: 'Lion', value: 'lion' },
                     { name: 'Fish', value: 'meemee' },
                     { name: 'Panda', value: 'panda' },
-                    { name: 'ping', value: 'ping' },
-                    { name: 'pong', value: 'ping' },
                 )),
 	async execute(interaction) {
         const category = interaction.options.getString('species') ?? 'error';
