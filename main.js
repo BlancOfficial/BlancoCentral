@@ -6,16 +6,20 @@ const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require(
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const commandsPath = path.join(__dirname, 'commands');
 const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-client.commands = new Collection();
-client.once(Events.ClientReady, c => { console.log(`Ready! Logged in as ${c.user.tag}`);}); //activates client and awaits connecetion confirmation
-client.login(require("./auth.json").BlancoBot); //Bot accesses discord using Auth Discord Token
-require('events').EventEmitter.defaultMaxListeners = 80; // Current Event Listeners are below this, increased for better slack 
 process.on('unhandledRejection', error => {console.log(error)}); //>.> if it works, it works
+client.commands = new Collection();
 
+client.once(Events.ClientReady, c => 
+	{ 
+		console.log(`Ready! Logged in as ${c.user.tag}`);
+		client.user.setActivity('You Commit War Crimes', { type: ActivityType.Watching });
+	});
+
+
+client.login(require("./auth.json").BlancoBot); //Bot accesses discord using Auth Discord Token
 
 client.on('guildCreate', guild => { // Runs when joining a new server
     guild.systemChannel.send(`Thanks for inviting me to the server ^^`)
-    guild.systemChannel.send("Enter `/info` to get started, Just like this : ")
     });
 
 client.on('guildMemberAdd', new_member => { //DM new user
