@@ -17,6 +17,7 @@ module.exports = {
                     color : Math.floor(Math.random()*16777215),
                     description : ("Currently running " + version_Bot + "\n" + "Change log : " + update_log),
                     image : {url : thank},
+                    footer : {text : "ⓘ Bot is suspected to contain illegal concentrations of cuteness. Appease it's appetite for wholesomeness by DMing Blanc cute pics", iconURL : "https://cdn.discordapp.com/attachments/806288700736405506/1064289826871967855/chel__1x1.png"}
                 }],
         }); //Response
 	},
