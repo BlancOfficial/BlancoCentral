@@ -9,9 +9,8 @@
   },
   "keywords": [],
   "author": "BlancDeOfficial",
-  "license": "BlanCorp",
+  "license": "CML",
   "dependencies": {
-    "@zeldafan0225/stable_horde": "^1.3.3",
     "discord.js": "^14.7.1"
   }
 }
