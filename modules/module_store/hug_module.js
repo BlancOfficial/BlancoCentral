@@ -38,4 +38,5 @@ module.exports = ["https://c.tenor.com/9V_G8kiWtToAAAAi/lily-and-marigold.gif",
 "https://c.tenor.com/dLB_5BXPnbkAAAAC/aikatsu-aikatsu-stars.gif", 
 "https://c.tenor.com/qF7mO4nnL0sAAAAS/abra%C3%A7o-hug.gif", 
 "https://c.tenor.com/SIw6C9wrgPUAAAAC/anime-hug.gif",
-"https://c.tenor.com/I6YEqtV4gv8AAAAC/anime-hug-hug.gif"]
+"https://c.tenor.com/I6YEqtV4gv8AAAAC/anime-hug-hug.gif",
+"https://moonshadow-memes.tumblr.com/image/189511956844"]
